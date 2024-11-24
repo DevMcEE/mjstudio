@@ -13,7 +13,7 @@ export default function Home() {
         />
 
         <div style={{ padding: 10, textAlign: 'center'}}>
-          <p>Viru 9, 2 floor,</p>
+          <p>Viru 9, 2 floor, 1</p>
           <p>TALLINN, ESTONIA</p>
         </div>
     </div>
