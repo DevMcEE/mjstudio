@@ -1,26 +1,35 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Route } from "../api/route.types";
 
-export async function generateMetadata({params}: {params: {locale: string}}) {
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const { locale } = await params;
   
-  let metadata;
+  let data = { };
   try {
-    const response = await fetch(`${process.env.API_URL}/api/metadata`, {
+    data = await fetch(`${process.env.API_URL}/${Route.homePageMetadata}`, {
       headers: {
         'Accept-Language': locale,
       },
-    });
-    metadata = await response.json();
+    }).then((res) => res.json());
   } catch (error) {
     console.error('Failed to fetch metadata:', error);
-    metadata = { error: 'Internal Server Error' };
   };
 
-  return metadata;
+  return data;
 }
 
-export default function Home() {
+export default async function HomePage() {
+  let data = {};
+  try {
+   data = await fetch(`${process.env.API_URL}/${Route.homePageBody}`,{
+      cache: 'force-cache',
+    }).then((res) => res.json())
+  } catch (error) {
+    console.error('Failed to fetch metadata:', error);
+  }
+
+  console.log({data});
   return (
     <div className={styles.page}>
         <Image
