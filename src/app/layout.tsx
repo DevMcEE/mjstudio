@@ -7,11 +7,13 @@ import { Viewport } from "next";
 export const lato = Lato({ 
   weight: ['300' , '400', '700' ],
   variable: '--font-lato',
+  subsets: ['latin'],
 });
 
 export const songMuong = Song_Myung({ 
   weight: '400', 
   variable: '--font-song-myung',
+  subsets: ['latin']
 });
 
 export const viewport: Viewport = {
