@@ -24,10 +24,34 @@ export type MenuItem = {
 export type Menu = {
   [key in Locale]: MenuItem[];
 }
+
+export type Price = {
+  unit: string;
+  price: string;
+}
+
+export type Service = {
+  name: string;
+  description: string;
+  prices: Price[];
+}
+export type ContentItem = {
+  pageTitle: string;
+  pageSubTitle: string;
+  pageDescription: string;
+  address: string;
+  currency: string;
+  services: Service[];
+}
+
+export type Content = {
+  [key in Locale]: ContentItem;
+}
+
 export interface PageData {
   metadata: MetadataType[Locale];
   menu: Menu[Locale];
-  body: unknown;
+  body: Content[Locale];
   footer: unknown;
 }
 

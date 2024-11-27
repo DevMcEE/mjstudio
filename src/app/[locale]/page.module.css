@@ -1,8 +1,106 @@
+
 .page {
   width: 100%;
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
+}
+.navSection {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+
+}
+.navSectionOpen {
+  display: fixed;
+}
+
+.navSectionClosed {
+  display: none;
+  background: var(--background);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid red;
+}
+
+.heroBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: var(--backgroundOverlay);
+  color: var(--foreground);
+  position: relative;
+}
+
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.heroText {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  color: var(--fontColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.pageTitle{
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.pageSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+
+}
+
+.heroFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 2rem;
+  color: var(--fontColor);
+}
+.heroImage {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+.pageTitleContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pageDescription{
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 85%;
 }

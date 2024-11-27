@@ -1,0 +1,32 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--backgroundContrast) ;
+}
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 16px;
+    height: 60px;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.menuItem {
+    font-size: 2rem;
+    margin: 1rem;
+    color: var(--fontColorContrast);
+}

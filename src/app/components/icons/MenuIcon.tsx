@@ -1,0 +1,9 @@
+export const MenuIcon = () => {
+  return (
+    <svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line y1="1.5" x2="30" y2="1.5" stroke="white" strokeWidth="3"/>
+      <line y1="13.5" x2="30" y2="13.5" stroke="white" strokeWidth="3"/>
+      <line y1="25.5" x2="30" y2="25.5" stroke="white" strokeWidth="3"/>
+    </svg>
+  )
+}
