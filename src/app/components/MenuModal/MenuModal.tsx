@@ -22,7 +22,7 @@ export const MenuModal = ({menu, onClose}: MenuModalProps) => {
             menu.map(({ title, url, hash }) => (
               <li className={styles.menuItem} key={`${url}${hash}`}>
                 {/* @ts-expect-error - type / */}
-                <Link href={`${url}${hash}`}>{title}</Link>
+                <Link href={`${url}#${hash}`} onClick={onClose}>{title}</Link>
               </li>
             ))
           }

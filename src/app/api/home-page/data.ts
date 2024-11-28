@@ -22,24 +22,24 @@ export const metadata: MetadataType = {
 
 export const menu: Menu = {
   [Locale.en]: [
-    { title: 'Prices', url: '/', hash: '#prices' },
-    { title: 'About us', url: '/', hash: '#about' },
-    { title: 'Contact', url: '/', hash: '#contact' },
+    { title: 'Services', url: '/', hash: 'services' },
+    { title: 'About us', url: '/', hash: 'about' },
+    { title: 'Contact', url: '/', hash: 'contact' },
   ],
   [Locale.ru]: [
-    { title: 'Цены', url: '/', hash: '#tseni' },
-    { title: 'О нас', url: '/', hash: '#o-nas' },
-    { title: 'Контакты', url: '/', hash: '#kontakt6' },
+    { title: 'Услуги', url: '/', hash: 'uslugi' },
+    { title: 'О нас', url: '/', hash: 'o-nas' },
+    { title: 'Контакты', url: '/', hash: 'kontakt6' },
   ],
   [Locale.et]: [
-    { title: 'Hinnad', url: '/', hash: '#hinnad' },
-    { title: 'Meist', url: '/', hash: '#meist' },
-    { title: 'Kontakt', url: '/', hash: '#kontaktid' },
+    { title: 'Teenused', url: '/', hash: 'teenused' },
+    { title: 'Meist', url: '/', hash: 'meist' },
+    { title: 'Kontakt', url: '/', hash: 'kontaktid' },
   ],
   [Locale.th]: [
-    { title: 'ราคา', url: '/', hash: '#raka' },
-    { title: 'เกี่ยวกับเรา', url: '/', hash: '#kieo-kap-rao' },
-    { title: 'ติดต่อ', url: '/', hash: '#tit-to' },
+    { title: 'บริการ', url: '/', hash: 'brikar' },
+    { title: 'เกี่ยวกับเรา', url: '/', hash: 'kieo-kap-rao' },
+    { title: 'ติดต่อ', url: '/', hash: 'tit-to' },
   ],
 };
 
@@ -50,6 +50,7 @@ export const content: Content = {
     pageDescription: 'Expert Care for Face, Head and Shoulders',
     address: 'Viru 9, TALLINN',
     currency: '€',
+    serviceBlockId: menu[Locale.en][0].hash,
     services: [
       {
         name: 'Face massage',
@@ -85,7 +86,7 @@ export const content: Content = {
       },
       {
         name: 'Washing hairs',
-        description: 'Washing hairs',
+        description: '',
         prices: [
           { unit: 'Short hair', price: '25' },
           { unit: 'Long Hair ', price: '35' },
@@ -99,6 +100,7 @@ export const content: Content = {
     pageDescription: 'Профессиональный уход за лицом, головой и плечами',
     address: 'Viru 9, ТАЛЛИНН',
     currency: '€',
+    serviceBlockId: menu[Locale.ru][0].hash,
     services: [
       {
         name: 'Массаж лица',
@@ -134,7 +136,7 @@ export const content: Content = {
       },
       {
         name: 'Мытье волос',
-        description: 'Мытье волос',
+        description: '',
         prices: [
           { unit: 'Короткие волосы', price: '25' },
           { unit: 'Длинные волосы', price: '35' },
@@ -148,6 +150,7 @@ export const content: Content = {
     pageDescription: 'Professionaalne näo-, pea- ja õlahooldus',
     address: 'Viru 9, TALLINN',
     currency: '€',
+    serviceBlockId: menu[Locale.et][0].hash,
     services: [
       {
         name: 'Näomassaaž',
@@ -183,7 +186,7 @@ export const content: Content = {
       },
       {
         name: 'Juuste pesemine',
-        description: 'Juuste pesemine',
+        description: '',
         prices: [
           { unit: 'Lühikesed juuksed', price: '25' },
           { unit: 'Pikad juuksed', price: '35' },
@@ -197,6 +200,7 @@ export const content: Content = {
     pageDescription: 'การดูแลมืออาชีพสำหรับใบหน้า ศีรษะ และไหล่',
     address: 'Viru 9, ชั้น 2, 1\nทาลลินน์, เอสโตเนีย',
     currency: '€',
+    serviceBlockId: menu[Locale.th][0].hash,
     services: [
       {
         name: 'นวดหน้า',
@@ -232,7 +236,7 @@ export const content: Content = {
       },
       {
         name: 'สระผม',
-        description: 'สระผม',
+        description: '',
         prices: [
           { unit: 'ผมสั้น', price: '25' },
           { unit: 'ผมยาว', price: '35' },

@@ -1,6 +1,7 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import { ContentItem, Route } from "../api/route.types";
+import { HeroBlock } from "./_blocks/HeroBlock";
+import { ServicesBlock } from "./_blocks/ServicesBlock";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -38,38 +39,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <div className={styles.page}>
-      <div className={styles.heroBlock}>
-        <video className={styles.bgVideo} width="768" height="1200" autoPlay muted loop preload="auto" playsInline >
-          <source src="/video1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <div className={styles.heroImage}>
-        <Image
-          src="/face-logo-white.svg"
-          alt="MJ Studio"
-          width={246}
-          height={246}
-          priority
-        />
-        </div>
-
-        {!!data && (
-          
-          <div className={styles.heroText}>
-            <div className={styles.pageTitleContainer}>
-              <h1 className={styles.pageTitle}>{data.pageTitle}</h1>
-              <h2 className={styles.pageSubtitle}>{data.pageSubTitle}</h2>
-            </div>
-
-            <p className={styles.pageDescription}>{data.pageDescription}</p>
-            <p className={styles.address}>{data.address}</p>
-
-          </div>
-        )}
- 
-      </div>
-      
+      <HeroBlock {...data}/>
+      <ServicesBlock {...data} />
     </div>
   );
 }

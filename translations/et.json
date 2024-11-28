@@ -1,3 +1,7 @@
 {
- "siteName": "MJ Studio"
+  "siteName": "MJ Studio",
+  "services": {
+    "title": "Teenused",
+    "noServices": "Teenuseid pole saadaval"
+  }
 }

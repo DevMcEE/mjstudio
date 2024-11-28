@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  column-gap: 3rem;
+  border-top: 1px solid var(--secondaryColor);
+  padding: 1rem 0;
+}
+
+.text {
+  width: 100%;
+}
+
+.unitPrice {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  color: var(--fontSecondaryColor);
+}

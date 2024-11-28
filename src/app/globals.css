@@ -5,7 +5,8 @@
   --backgroundOverlay: rgba(0, 0, 0, 0.5);
   --fontColor: #fff;
   --fontColorContrast: #000;
-
+  --fontSecondaryColor: #585858;
+  --secondaryColor: #E9E9E9;
 }
 
 

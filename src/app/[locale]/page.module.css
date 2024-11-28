@@ -104,3 +104,33 @@
   font-size: 1.2rem;
   max-width: 85%;
 }
+
+.blockTitle {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.blockTitleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.2rem;
+  padding-bottom: 2rem;
+}
+.serviceBlockContainer {
+  background-color: var(--backgroundContrast);
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.serviceBlockContent {
+  width: 100%;
+  max-width: 1200px;
+
+}
+.servicesListContainer{
+  display: flex;
+  flex-direction: column;
+}

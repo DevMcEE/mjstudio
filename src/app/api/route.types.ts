@@ -41,6 +41,7 @@ export type ContentItem = {
   pageDescription: string;
   address: string;
   currency: string;
+  serviceBlockId: string;
   services: Service[];
 }
 
