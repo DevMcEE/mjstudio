@@ -1,7 +1,4 @@
-import { Link } from "@/i18n/routing";
 import { MenuItem, Route } from "../api/route.types";
-import { MobileMenu } from "../components/MobileMenu";
-import { Logo } from "../components/Logo/Logo";
 import { TopBar } from "../components/TopBar/TopBar";
 
 export default async function PageLayout({

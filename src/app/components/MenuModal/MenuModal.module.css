@@ -30,3 +30,10 @@
     margin: 1rem;
     color: var(--fontColorContrast);
 }
+
+.languageContainer {
+    position: absolute;
+
+    right: 0.9rem;
+    top: 5rem
+}

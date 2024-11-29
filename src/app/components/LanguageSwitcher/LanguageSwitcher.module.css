@@ -1,0 +1,21 @@
+.languageSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.languageSwitcher a {
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.regularLink {
+  text-decoration: none;
+}
+
+.activeLink {
+  text-decoration: underline;
+}
