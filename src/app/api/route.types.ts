@@ -35,6 +35,13 @@ export type Service = {
   description: string;
   prices: Price[];
 }
+
+export type AboutBlock = {
+  title: string;
+  description: string[];
+  abouyUsImage: string;
+}
+
 export type ContentItem = {
   pageTitle: string;
   pageSubTitle: string;
@@ -43,6 +50,7 @@ export type ContentItem = {
   currency: string;
   serviceBlockId: string;
   services: Service[];
+  aboutUs: AboutBlock;
 }
 
 export type Content = {

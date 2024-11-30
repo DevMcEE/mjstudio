@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { ContentItem, Route } from "../api/route.types";
 import { HeroBlock } from "./_blocks/HeroBlock";
 import { ServicesBlock } from "./_blocks/ServicesBlock";
+import { AboutUsBlock } from "./_blocks/AboutUsBlock";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -31,8 +32,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         'Accept-Language': locale,
       },
     }).then((res) => res.json());
-
-    console.log('data:', data);
   } catch (error) {
     console.error('Failed to fetch metadata:', error);
   }
@@ -41,6 +40,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div className={styles.page}>
       <HeroBlock {...data}/>
       <ServicesBlock {...data} />
+      <AboutUsBlock {...data} />
     </div>
   );
 }
