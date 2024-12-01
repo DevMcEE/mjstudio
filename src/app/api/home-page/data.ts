@@ -105,11 +105,11 @@ export const content: Content = {
         ]
       },
       {
-        name: 'MJ Full Course for hairs ',
+        name: 'MJ Full Course',
         description: 'Wash hair, Hair treatment, Hair dryer, Full face treatment,  head & shoulder massage, Chest & hands massage, Face Ozone',
         prices: [
-          { unit: 'Short hair', price: Price.mjCourseHairs.short },
-          { unit: 'Long Hair ', price:  Price.mjCourseHairs.long },
+          { unit: '150min Short Hair', price: Price.mjCourseHairs.short },
+          { unit: '150min Long Hair ', price:  Price.mjCourseHairs.long },
         ]
       },
       {
@@ -182,19 +182,19 @@ export const content: Content = {
         ]
       },
       {
-        name: 'Полный курс MJ для волос',
+        name: 'Полный курс MJ',
         description: 'Мытье волос, Лечение волос, Сушка волос, Полный уход за лицом, Массаж головы и плеч, Массаж груди и рук, Озон для лица',
         prices: [
-          { unit: 'Короткие волосы', price: Price.mjCourseHairs.short },
-          { unit: 'Длинные волосы', price: Price.mjCourseHairs.long },
+          { unit: '150min кор. волосы', price: Price.mjCourseHairs.short },
+          { unit: '150min дл. волосы', price: Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'Мытье волос',
         description: '',
         prices: [
-          { unit: 'Короткие волосы', price: Price.washHairs.short },
-          { unit: 'Длинные волосы', price: Price.washHairs.long },
+          { unit: 'Кор. волосы', price: Price.washHairs.short },
+          { unit: 'Дл. волосы', price: Price.washHairs.long },
         ]
       },
     ],
@@ -263,19 +263,19 @@ export const content: Content = {
         ]
       },
       {
-        name: 'MJ täiskursus juustele',
+        name: 'MJ täiskursus',
         description: 'Juuste pesemine, Juuste ravi, Juuste kuivatamine, Täielik näohooldus, Pea- ja õlamassaaž, Rinna- ja kätemassaaž,  Näo osoon',
         prices: [
-          { unit: 'Lühikesed juuksed', price: Price.mjCourseHairs.short },
-          { unit: 'Pikad juuksed', price: Price.mjCourseHairs.long },
+          { unit: '150min lüh. juuksed', price: Price.mjCourseHairs.short },
+          { unit: '150min p. juuksed', price: Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'Juuste pesemine',
         description: '',
         prices: [
-          { unit: 'Lühikesed juuksed', price: Price.washHairs.short },
-          { unit: 'Pikad juuksed', price: Price.washHairs.long },
+          { unit: 'L. juuksed', price: Price.washHairs.short },
+          { unit: 'P. juuksed', price: Price.washHairs.long },
         ]
       },
     ],
@@ -339,11 +339,11 @@ export const content: Content = {
         ]
       },
       {
-        name: 'หลักสูตรเต็มรูปแบบ MJ สำหรับผม',
+        name: 'หลักสูตร MJ ครบวงจร',
         description: 'สระผม, บำบัดผม, เป่าผม, บำบัดหน้าครบวงจร, นวดศีรษะและไหล่, นวดหน้าอกและมือ',
         prices: [
-          { unit: 'ผมสั้น', price: Price.mjCourseHairs.short },
-          { unit: 'ผมยาว', price: Price.mjCourseHairs.long },
+          { unit: '150นาที ผมสั้น', price: Price.mjCourseHairs.short },
+          { unit: '150นาที ผมยาว', price: Price.mjCourseHairs.long },
         ]
       },
       {
