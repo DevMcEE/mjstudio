@@ -3,6 +3,7 @@ import { ContentItem, Route } from "../api/route.types";
 import { HeroBlock } from "./_blocks/HeroBlock";
 import { ServicesBlock } from "./_blocks/ServicesBlock";
 import { AboutUsBlock } from "./_blocks/AboutUsBlock";
+import { ContactsBlock } from "./_blocks/ContactsBlock";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -41,6 +42,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <HeroBlock {...data}/>
       <ServicesBlock {...data} />
       <AboutUsBlock {...data} />
+      <ContactsBlock {...data} />
     </div>
   );
 }

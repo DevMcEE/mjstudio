@@ -42,6 +42,28 @@ export type AboutBlock = {
   abouyUsImage: string;
 }
 
+export type WorkingHour = {
+  weekdays: string;
+  hours: string;
+}
+
+export type SocialLinks = {
+  facebook?: string;
+  instagram?: string;
+  twitter?: string;
+  tiktok?: string;
+}
+export type Contact = {
+  companyName: string;
+  companyRegNum: string;
+  companyAddress: string;
+  workingHours: WorkingHour[];
+  bookingNote: string;
+  callToContact: string;
+  email: string;
+  phone: string;
+  socialLinks: SocialLinks;
+}
 export type ContentItem = {
   pageTitle: string;
   pageSubTitle: string;
@@ -50,7 +72,10 @@ export type ContentItem = {
   currency: string;
   serviceBlockId: string;
   services: Service[];
+  aboutUsId: string;
   aboutUs: AboutBlock;
+  contactsId: string;
+  contacts: Contact
 }
 
 export type Content = {

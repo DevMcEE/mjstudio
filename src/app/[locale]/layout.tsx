@@ -1,4 +1,5 @@
 import { MenuItem, Route } from "../api/route.types";
+import { Footer } from "../components/Footer";
 import { TopBar } from "../components/TopBar/TopBar";
 
 export default async function PageLayout({
@@ -24,6 +25,7 @@ export default async function PageLayout({
     <div className="main-container">
       <TopBar menu={menu} />
       {children}
+      <Footer />
     </div>
   );
 }

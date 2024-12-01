@@ -3,5 +3,9 @@
   "services": {
     "title": "Teenused",
     "noServices": "Teenuseid pole saadaval"
+  },
+  "contacts": {
+    "title": "Kontakt",
+    "workingHoursTitle": "Tööaeg"
   }
 }

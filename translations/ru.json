@@ -3,5 +3,9 @@
   "services": {
     "title": "Услуги",
     "noServices": "Услуги недоступны"
- }
+  },
+  "contacts": {
+    "title": "Контакты",
+    "workingHoursTitle": "Рабочие часы"
+  }
 }

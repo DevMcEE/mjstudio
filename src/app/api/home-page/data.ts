@@ -43,6 +43,11 @@ export const menu: Menu = {
   ],
 };
 
+const SocialLinks = {
+  facebook: 'https://www.facebook.com/profile.php?id=61568231552804',
+  instagram: 'https://www.instagram.com/mjstudiofacemassage/'
+}
+
 export const content: Content = {
   [Locale.en]: {
     pageTitle: 'MJ Studio',
@@ -93,7 +98,9 @@ export const content: Content = {
         ]
       },
     ],
+    aboutUsId: menu[Locale.en][1].hash,
     aboutUs: {
+
       title: 'About Us',
       description:[ 
         'Welcome to our cozy and professional studio, located in the heart of the Old Town at Viru 9. With a convenient and easily accessible location, we aim to provide a tranquil space where you can escape the hustle of daily life and focus on self-care.',
@@ -103,6 +110,21 @@ export const content: Content = {
       ] ,
       abouyUsImage:  '/aboutUsImage.JPG',
     },
+    contactsId: menu[Locale.en][2].hash,
+    contacts: {
+      companyName: 'ATMW Invest OÜ',
+      companyRegNum: '16859397',
+      companyAddress: 'Viru 9, TALLINN',
+      workingHours: [
+        { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
+        { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
+      ],
+      bookingNote: 'NB! Our studio operates by appointment only—therapists are available exclusively during booked sessions.',
+      callToContact: 'Schedule your appointment by contacting us',
+      email: 'mjstudio.ee@gmail.com',
+      phone: '(+372)58494331',
+      socialLinks: SocialLinks
+    }
   },
   [Locale.ru]: {
     pageTitle: 'MJ Studio',
@@ -153,6 +175,7 @@ export const content: Content = {
         ]
       },
     ],
+    aboutUsId: menu[Locale.ru][1].hash,
     aboutUs: {
       title: 'О нас',
       description:[ 
@@ -163,6 +186,26 @@ export const content: Content = {
       ] ,
       abouyUsImage:  '/aboutUsImage.JPG',
     },
+    contactsId: menu[Locale.ru][2].hash,
+    contacts: {
+      companyName: 'ATMW Invest OÜ',
+      companyRegNum: '16859397',
+      companyAddress: 'Viru 9, TALLINN',
+      workingHours: [
+        { 
+          weekdays: 'Пн - Пт', 
+          hours: '10:00 - 18:00' 
+        },
+        { 
+          weekdays: 'Сб - Вс', 
+          hours: '12:00 - 18:00' },
+      ],
+      bookingNote: 'NB! Наша студия работает только по предварительной записи — терапевты доступны исключительно во время забронированных сеансов.',
+      callToContact: 'Запишитесь на прием, связавшись с нами через:',
+      email: 'mjstudio.ee@gmail.com',
+      phone: '(+372)58494331',
+      socialLinks: SocialLinks
+    }
   },
   [Locale.et]: {
     pageTitle: 'MJ Studio',
@@ -213,6 +256,7 @@ export const content: Content = {
         ]
       },
     ],
+    aboutUsId: menu[Locale.et][1].hash,
     aboutUs: {
       title: 'Meist',
       description:[ 
@@ -223,6 +267,21 @@ export const content: Content = {
       ] ,
       abouyUsImage:  '/aboutUsImage.JPG',
     },
+    contactsId: menu[Locale.et][2].hash,
+    contacts: {
+      companyName: 'ATMW Invest OÜ',
+      companyRegNum: '16859397',
+      companyAddress: 'Viru 9, TALLINN',
+      workingHours: [
+        { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
+        { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
+      ],
+      bookingNote: 'NB! Meie stuudio töötab ainult eelnevalt kokkuleppel — terapeutidel on saadaval ainult broneeritud seansside ajal.',
+      callToContact: 'Broneeri aeg, võttes meiega ühendust',
+      email: 'mjstudio.ee@gmail.com',
+      phone: '(+372)58494331',
+      socialLinks: SocialLinks
+    }
   },
   [Locale.th]: {
     pageTitle: 'MJ Studio',
@@ -273,6 +332,7 @@ export const content: Content = {
         ]
       },
     ],
+    aboutUsId: menu[Locale.th][1].hash,
     aboutUs: {
       title: 'เกี่ยวกับเรา',
       description:[ 
@@ -283,6 +343,21 @@ export const content: Content = {
       ] ,
       abouyUsImage:  '/aboutUsImage.JPG',
     },
+    contactsId: menu[Locale.th][2].hash,
+    contacts: {
+      companyName: 'ATMW Invest OÜ',
+      companyRegNum: '16859397',
+      companyAddress: 'Viru 9, TALLINN',
+      workingHours: [
+        { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
+        { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
+      ],
+      bookingNote: 'หมายเหตุ! สตูดิโอของเราเปิดให้บริการตามการนัดหมายเท่านั้น—นักบำบัดมีให้บริการเฉพาะในช่วงเวลาที่มีการจองเท่านั้น.',
+      callToContact: 'กำหนดการนัดหมายของคุณโดยการติดต่อเรา',
+      email: 'mjstudio.ee@gmail.com',
+      phone: '(+372)58494331',
+      socialLinks: SocialLinks
+    }
   }
 };
 

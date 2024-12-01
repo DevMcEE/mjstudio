@@ -3,5 +3,9 @@
   "services": {
     "title": "Services",
     "noServices": "No services available"
+  },
+  "contacts": {
+    "title": "Contact",
+    "workingHoursTitle": "Working hours"
   }
 }

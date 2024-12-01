@@ -13,6 +13,7 @@ interface MenuModalProps {
 };
 
 export const MenuModal = ({menu, onClose, currentLocale}: MenuModalProps) => {
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -27,7 +28,7 @@ export const MenuModal = ({menu, onClose, currentLocale}: MenuModalProps) => {
             menu.map(({ title, url, hash }) => (
               <li className={styles.menuItem} key={`${url}${hash}`}>
                 {/* @ts-expect-error - type / */}
-                <Link href={`${url}#${hash}`} onClick={onClose}>{title}</Link>
+                <Link href={`${url}#${hash}`} locale={currentLocale} onClick={onClose}>{title}</Link>
               </li>
             ))
           }
