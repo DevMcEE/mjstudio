@@ -1,6 +1,6 @@
 import { Locale, locales } from '@/i18n/config.types';
 import { NextRequest, NextResponse } from 'next/server';
-import { data } from '../data';
+import { data, SocialLinks } from '../data';
 
 
 export async function GET(request: NextRequest) {
@@ -12,7 +12,9 @@ export async function GET(request: NextRequest) {
 
   try {
     return NextResponse.json(
-      data[locale].menu,
+      { 
+        menu: data[locale].menu,
+        socialLinks: SocialLinks},
       { status: 200 }
     );
   } catch (error) {

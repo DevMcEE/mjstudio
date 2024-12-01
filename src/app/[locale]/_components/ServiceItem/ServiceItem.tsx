@@ -13,8 +13,8 @@ export const ServiceItem = ({ name = '', description = '', prices = [], currency
         <p className={styles.description}>{description}</p>
       </div>
       <div>
-        {prices.map((price, index) => (
-          <p className={styles.unitPrice} key={index}>{price.price} {currency}/{price.unit}</p>
+        {prices.map((item, index) => (
+          <p className={styles.unitPrice} key={index}><span>{item.price}{currency}</span> <span className={styles.unit}>{item.unit}</span></p>
         ))}
       </div>
     </div>

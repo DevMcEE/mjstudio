@@ -11,12 +11,17 @@
 
 .unitPrice {
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
   white-space: nowrap;
   padding-bottom: 0.5rem;
   font-weight: 600;
+  align-items: flex-end;
 }
-
+.unit {
+  font-size: 0.8rem;
+  color: var(--fontSecondaryColor);
+}
 .title {
   font-weight: 600;
   font-size: 1rem;

@@ -43,7 +43,7 @@ export const menu: Menu = {
   ],
 };
 
-const SocialLinks = {
+export const SocialLinks = {
   facebook: 'https://www.facebook.com/profile.php?id=61568231552804',
   instagram: 'https://www.instagram.com/mjstudiofacemassage/'
 }
@@ -109,7 +109,7 @@ export const content: Content = {
         description: 'Wash hair, Hair treatment, Hair dryer, Full face treatment,  head & shoulder massage, Chest & hands massage, Face Ozone',
         prices: [
           { unit: '150min Short Hair', price: Price.mjCourseHairs.short },
-          { unit: '150min Long Hair ', price:  Price.mjCourseHairs.long },
+          { unit: '150min Long Hair', price:  Price.mjCourseHairs.long },
         ]
       },
       {
@@ -193,8 +193,8 @@ export const content: Content = {
         name: 'Мытье волос',
         description: '',
         prices: [
-          { unit: 'Кор. волосы', price: Price.washHairs.short },
-          { unit: 'Дл. волосы', price: Price.washHairs.long },
+          { unit: 'Короткие волосы', price: Price.washHairs.short },
+          { unit: 'Длинные волосы', price: Price.washHairs.long },
         ]
       },
     ],
@@ -274,8 +274,8 @@ export const content: Content = {
         name: 'Juuste pesemine',
         description: '',
         prices: [
-          { unit: 'L. juuksed', price: Price.washHairs.short },
-          { unit: 'P. juuksed', price: Price.washHairs.long },
+          { unit: 'Lühikised juuksed', price: Price.washHairs.short },
+          { unit: 'Pikkad juuksed', price: Price.washHairs.long },
         ]
       },
     ],

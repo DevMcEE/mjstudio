@@ -5,6 +5,9 @@
     right: 0;
     bottom: 0;
     background: var(--backgroundContrast) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .header {
     display: flex;
@@ -21,14 +24,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    padding: 10px;
+    max-width: 1200px;
     height: 100%;
+    width: 100%;
 }
 
 .menuItem {
     font-size: 2rem;
     margin: 1rem;
     color: var(--fontColorContrast);
+    list-style: none;
 }
 
 .languageContainer {
@@ -36,4 +43,19 @@
 
     right: 0.9rem;
     top: 5rem
+}
+
+.footer {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.socialIconLinksContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
 }

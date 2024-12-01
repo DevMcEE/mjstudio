@@ -102,7 +102,6 @@
   text-align: center;
   font-size: 1.2rem;
   max-width: 85%;
-  line-height: 1.5;
 }
 
 .blockTitle {
@@ -179,7 +178,6 @@
   padding: 0 1rem;
 }
 .contentParagraph {
-  line-height: 1.5;
 }
 
 .boldText {
@@ -187,7 +185,7 @@
 }
 
 .innerBlockDelimiter {
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .workingHours {
