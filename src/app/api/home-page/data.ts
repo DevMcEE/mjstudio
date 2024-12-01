@@ -48,6 +48,29 @@ const SocialLinks = {
   instagram: 'https://www.instagram.com/mjstudiofacemassage/'
 }
 
+const Price = {
+  faceMassage: {
+    min60: '50',
+    min90: '55',
+  },
+  faceScrap: {
+    min60: '55',
+    min90: '65',
+  },
+  mjCourseMassage: {
+    min90: '65',
+    min120: '95',
+  },
+  mjCourseHairs: {
+    short: '125',
+    long: '135',
+  },
+  washHairs: {
+    short: '25',
+    long: '35',
+  }
+}
+
 export const content: Content = {
   [Locale.en]: {
     pageTitle: 'MJ Studio',
@@ -61,40 +84,40 @@ export const content: Content = {
         name: 'Face massage',
         description: 'Clean face, Face massage, Head & Shoulder massage',
         prices: [
-          { unit: '60min', price: '50' },
-          { unit: '90min', price: '60' },
+          { unit: '60min', price: Price.faceMassage.min60 },
+          { unit: '90min', price: Price.faceMassage.min90 },
         ],
       },
       {
         name: 'Face scrap',
-        description: 'Clean face, Face scrap, Face massage, Head & Shoulder massage',
+        description: 'Clean face, Face scrap, Face massage, Head & Shoulder massage, Face Ozone',
         prices: [
-          { unit: '60min', price: '50' },
-          { unit: '90min', price: '60' },
+          { unit: '60min', price: Price.faceScrap.min60 },
+          { unit: '90min', price: Price.faceScrap.min90 },
         ]
       },
       {
         name: 'MJ Course Treatment Massage',
-        description: 'Clean face, Face scrap, Face massage treatment, head & shoulder massage',
+        description: 'Clean face, Face scrap, Face massage treatment, head & shoulder massage, Face Ozone',
         prices: [
-          { unit: '90min', price: '65' },
-          { unit: '120min', price: '95' },
+          { unit: '90min', price: Price.mjCourseMassage.min90 },
+          { unit: '120min', price: Price.mjCourseMassage.min120 },
         ]
       },
       {
         name: 'MJ Full Course for hairs ',
-        description: 'Wash hair, Hair treatment, Hair dryer, Full face treatment,  head & shoulder massage, Chest & hands massage',
+        description: 'Wash hair, Hair treatment, Hair dryer, Full face treatment,  head & shoulder massage, Chest & hands massage, Face Ozone',
         prices: [
-          { unit: 'Short hair', price: '125' },
-          { unit: 'Long Hair ', price: '135' },
+          { unit: 'Short hair', price: Price.mjCourseHairs.short },
+          { unit: 'Long Hair ', price:  Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'Washing hairs',
         description: '',
         prices: [
-          { unit: 'Short hair', price: '25' },
-          { unit: 'Long Hair ', price: '35' },
+          { unit: 'Short hair', price:  Price.washHairs.short },
+          { unit: 'Long Hair ', price:   Price.washHairs.long },
         ]
       },
     ],
@@ -138,40 +161,40 @@ export const content: Content = {
         name: 'Массаж лица',
         description: 'Чистка лица, Массаж лица, Массаж головы и плеч',
         prices: [
-          { unit: '60мин', price: '50' },
-          { unit: '90мин', price: '60' },
+          { unit: '60мин', price: Price.faceMassage.min60 },
+          { unit: '90мин', price: Price.faceMassage.min90 },
         ]
       },
       {
         name: 'Скраб лица',
-        description: 'Чистка лица, Скраб лица, Массаж лица, Массаж головы и плеч',
+        description: 'Чистка лица, Скраб лица, Массаж лица, Массаж головы и плеч, Озон для лица',
         prices: [
-          { unit: '60мин', price: '50' },
-          { unit: '90мин', price: '60' },
+          { unit: '60мин', price: Price.faceScrap.min60 },
+          { unit: '90мин', price:  Price.faceScrap.min90 },
         ]
       },
       {
         name: 'Курс лечения MJ',
-        description: 'Чистка лица, Скраб лица, Лечебный массаж лица, Массаж головы и плеч',
+        description: 'Чистка лица, Скраб лица, Лечебный массаж лица, Массаж головы и плеч, Озон для лица',
         prices: [
-          { unit: '90мин', price: '65' },
-          { unit: '120мин', price: '95' },
+          { unit: '90мин', price:   Price.mjCourseMassage.min90 },
+          { unit: '120мин', price: Price.mjCourseMassage.min120 },
         ]
       },
       {
         name: 'Полный курс MJ для волос',
-        description: 'Мытье волос, Лечение волос, Сушка волос, Полный уход за лицом, Массаж головы и плеч, Массаж груди и рук',
+        description: 'Мытье волос, Лечение волос, Сушка волос, Полный уход за лицом, Массаж головы и плеч, Массаж груди и рук, Озон для лица',
         prices: [
-          { unit: 'Короткие волосы', price: '125' },
-          { unit: 'Длинные волосы', price: '135' },
+          { unit: 'Короткие волосы', price: Price.mjCourseHairs.short },
+          { unit: 'Длинные волосы', price: Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'Мытье волос',
         description: '',
         prices: [
-          { unit: 'Короткие волосы', price: '25' },
-          { unit: 'Длинные волосы', price: '35' },
+          { unit: 'Короткие волосы', price: Price.washHairs.short },
+          { unit: 'Длинные волосы', price: Price.washHairs.long },
         ]
       },
     ],
@@ -219,40 +242,40 @@ export const content: Content = {
         name: 'Näomassaaž',
         description: 'Näo puhastamine, Näomassaaž, Pea- ja õlamassaaž',
         prices: [
-          { unit: '60min', price: '50' },
-          { unit: '90min', price: '60' },
+          { unit: '60min', price: Price.faceMassage.min60 },
+          { unit: '90min', price: Price.faceMassage.min90 },
         ]
       },
       {
         name: 'Näokoorimine',
-        description: 'Näo puhastamine, Näokoorimine, Näomassaaž, Pea- ja õlamassaaž',
+        description: 'Näo puhastamine, Näokoorimine, Näomassaaž, Pea- ja õlamassaaž, Näo osoon',
         prices: [
-          { unit: '60min', price: '50' },
-          { unit: '90min', price: '60' },
+          { unit: '60min', price: Price.faceScrap.min60 },
+          { unit: '90min', price: Price.faceScrap.min90 },
         ]
       },
       {
         name: 'MJ kursuse ravi massaaž',
-        description: 'Näo puhastamine, Näokoorimine, Näomassaaži ravi, Pea- ja õlamassaaž',
+        description: 'Näo puhastamine, Näokoorimine, Näomassaaži ravi, Pea- ja õlamassaaž,  Näo osoon',
         prices: [
-          { unit: '90min', price: '65' },
-          { unit: '120min', price: '95' },
+          { unit: '90min', price: Price.mjCourseMassage.min90 },
+          { unit: '120min', price: Price.mjCourseMassage.min120 },
         ]
       },
       {
         name: 'MJ täiskursus juustele',
-        description: 'Juuste pesemine, Juuste ravi, Juuste kuivatamine, Täielik näohooldus, Pea- ja õlamassaaž, Rinna- ja kätemassaaž',
+        description: 'Juuste pesemine, Juuste ravi, Juuste kuivatamine, Täielik näohooldus, Pea- ja õlamassaaž, Rinna- ja kätemassaaž,  Näo osoon',
         prices: [
-          { unit: 'Lühikesed juuksed', price: '125' },
-          { unit: 'Pikad juuksed', price: '135' },
+          { unit: 'Lühikesed juuksed', price: Price.mjCourseHairs.short },
+          { unit: 'Pikad juuksed', price: Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'Juuste pesemine',
         description: '',
         prices: [
-          { unit: 'Lühikesed juuksed', price: '25' },
-          { unit: 'Pikad juuksed', price: '35' },
+          { unit: 'Lühikesed juuksed', price: Price.washHairs.short },
+          { unit: 'Pikad juuksed', price: Price.washHairs.long },
         ]
       },
     ],
@@ -295,40 +318,40 @@ export const content: Content = {
         name: 'นวดหน้า',
         description: 'ทำความสะอาดหน้า, นวดหน้า, นวดศีรษะและไหล่',
         prices: [
-          { unit: '60นาที', price: '50' },
-          { unit: '90นาที', price: '60' },
+          { unit: '60นาที', price: Price.faceMassage.min60 },
+          { unit: '90นาที', price: Price.faceMassage.min90 },
         ]
       },
       {
         name: 'ขัดหน้า',
-        description: 'ทำความสะอาดหน้า, ขัดหน้า, นวดหน้า, นวดศีรษะและไหล่',
+        description: 'ทำความสะอาดหน้า, ขัดหน้า, นวดหน้า, นวดศีรษะและไหล่, นวดหน้าอกและมือ',
         prices: [
-          { unit: '60นาที', price: '50' },
-          { unit: '90นาที', price: '60' },
+          { unit: '60นาที', price: Price.faceScrap.min60 },
+          { unit: '90นาที', price: Price.faceScrap.min90 },
         ]
       },
       {
         name: 'นวดบำบัดหลักสูตร MJ',
-        description: 'ทำความสะอาดหน้า, ขัดหน้า, นวดบำบัดหน้า, นวดศีรษะและไหล่',
+        description: 'ทำความสะอาดหน้า, ขัดหน้า, นวดบำบัดหน้า, นวดศีรษะและไหล่, นวดหน้าอกและมือ',
         prices: [
-          { unit: '90นาที', price: '65' },
-          { unit: '120นาที', price: '95' },
+          { unit: '90นาที', price: Price.mjCourseMassage.min90 },
+          { unit: '120นาที', price: Price.mjCourseMassage.min120 },
         ]
       },
       {
         name: 'หลักสูตรเต็มรูปแบบ MJ สำหรับผม',
         description: 'สระผม, บำบัดผม, เป่าผม, บำบัดหน้าครบวงจร, นวดศีรษะและไหล่, นวดหน้าอกและมือ',
         prices: [
-          { unit: 'ผมสั้น', price: '125' },
-          { unit: 'ผมยาว', price: '135' },
+          { unit: 'ผมสั้น', price: Price.mjCourseHairs.short },
+          { unit: 'ผมยาว', price: Price.mjCourseHairs.long },
         ]
       },
       {
         name: 'สระผม',
         description: '',
         prices: [
-          { unit: 'ผมสั้น', price: '25' },
-          { unit: 'ผมยาว', price: '35' },
+          { unit: 'ผมสั้น', price: Price.washHairs.short },
+          { unit: 'ผมยาว', price: Price.washHairs.long },
         ]
       },
     ],
