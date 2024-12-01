@@ -51,14 +51,14 @@ export const SocialLinks = {
 const Price = {
   faceMassage: {
     min60: '50',
-    min90: '55',
+    min90: '60',
   },
   faceScrap: {
     min60: '55',
     min90: '65',
   },
   mjCourseMassage: {
-    min90: '65',
+    min90: '75',
     min120: '95',
   },
   mjCourseHairs: {
