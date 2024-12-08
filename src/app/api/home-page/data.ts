@@ -85,7 +85,12 @@ export const businessData: BusinessData = {
   address: "Viru 9, TALLINN",
   email: "mjstudio.ee@gmail.com",
   telephone: "(+372)58494331",
-  formattedPhone: "(+372) 58494331"
+  formattedPhone: "(+372) 58494331",
+  postalCode: '10140',
+  country: 'Estonia',
+  city: 'Tallinn',
+  latitude: "56.608606",
+  longitude: "12.5899642"
 }
 
 export const content: Content = {
@@ -165,6 +170,34 @@ export const content: Content = {
       phone: businessData.telephone,
       visiblePhone: `${businessData.formattedPhone} (eng | thai)`,
       socialLinks: SocialLinks
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "@id": `${process.env.BASE_URL}/en/`,
+      "name": "MJ Studio",
+      "description": "Expert Care for Face, Head and Shoulders",
+      "url":  `${process.env.BASE_URL}/en/`,
+      "telephone": businessData.telephone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": businessData.address,
+        "addressLocality": businessData.city,
+        "postalCode": businessData.postalCode,
+        "addressCountry": businessData.country
+      },
+      "openingHours": [
+        "Mo-Fr 10:00-18:00",
+        "Sa-Su 12:00-18:00"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": businessData.latitude,
+        "longitude":businessData.longitude
+      },  
+      "image": "/aboutUsImage.JPG",
+      "priceRange": "€€",
+      "sameAs": Object.values(SocialLinks),
     }
   },
   [Locale.ru]: {
@@ -247,6 +280,34 @@ export const content: Content = {
       phone: businessData.telephone,
       visiblePhone: `${businessData.formattedPhone} (англ | тай)`,
       socialLinks: SocialLinks
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "@id": `${process.env.BASE_URL}/ru/`,
+      "name": "MJ Studio",
+      "description": "Профессиональный уход за лицом, головой и плечами",
+      "url":  `${process.env.BASE_URL}/ru/`,
+      "telephone": businessData.telephone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": businessData.address,
+        "addressLocality": businessData.city,
+        "postalCode": businessData.postalCode,
+        "addressCountry": businessData.country
+      },
+      "openingHours": [
+        "Пн-Пт 10:00-18:00",
+        "Сб-Вс 12:00-18:00"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": businessData.latitude,
+        "longitude":businessData.longitude
+      },  
+      "image": "/aboutUsImage.JPG",
+      "priceRange": "€€",
+      "sameAs": Object.values(SocialLinks),
     }
   },
   [Locale.et]: {
@@ -324,6 +385,34 @@ export const content: Content = {
       phone: businessData.telephone,
       visiblePhone: `${businessData.formattedPhone} (eng | tai)`,
       socialLinks: SocialLinks
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "@id": `${process.env.BASE_URL}/et/`,
+      "name": "MJ Studio",
+      "description": "Professionaalne näo-, pea- ja õlahooldus",
+      "url":  `${process.env.BASE_URL}/et/`,
+      "telephone": businessData.telephone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": businessData.address,
+        "addressLocality": businessData.city,
+        "postalCode": businessData.postalCode,
+        "addressCountry": businessData.country
+      },
+      "openingHours": [
+        "E-R 10:00-18:00",
+        "L-P 12:00-18:00"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": businessData.latitude,
+        "longitude":businessData.longitude
+      },  
+      "image": "/aboutUsImage.JPG",
+      "priceRange": "€€",
+      "sameAs": Object.values(SocialLinks),
     }
   },
   [Locale.th]: {
@@ -401,8 +490,36 @@ export const content: Content = {
       phone: businessData.telephone,
       visiblePhone: `${businessData.formattedPhone} (eng | thai)`,
       socialLinks: SocialLinks
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "@id": `${process.env.BASE_URL}/th/`,
+      "name": "MJ Studio",
+      "description": "การดูแลมืออาชีพสำหรับใบหน้า ศีรษะ และไหล่",
+      "url":  `${process.env.BASE_URL}/th/`,
+      "telephone": businessData.telephone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": businessData.address,
+        "addressLocality": businessData.city,
+        "postalCode": businessData.postalCode,
+        "addressCountry": businessData.country
+      },
+      "openingHours": [
+        "จันทร์ - ศุกร์ 10:00-18:00",
+        "เสาร์ - อาทิตย์ 12:00-18:00"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": businessData.latitude,
+        "longitude":businessData.longitude
+      },  
+      "image": "/aboutUsImage.JPG",
+      "priceRange": "€€",
+      "sameAs": Object.values(SocialLinks),
     }
-  }
+  },
 };
 
 export const data: PageLocaleData = {

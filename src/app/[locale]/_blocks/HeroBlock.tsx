@@ -15,7 +15,7 @@ export const HeroBlock = ({
   address = ''
 }: HeroBlockProps) => {
   return (
-    <div className={styles.heroBlock}>
+    <section className={styles.heroBlock}>
       <video className={styles.bgVideo} width="768" height="1200" autoPlay muted loop preload="auto" playsInline >
         <source src="/video1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -40,6 +40,6 @@ export const HeroBlock = ({
         <p className={styles.pageDescription}>{pageDescription}</p>
         <p className={styles.address}>{address}</p>
       </div>
-    </div>
+    </section>
   );
 };

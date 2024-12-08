@@ -25,10 +25,10 @@ export default async function PageLayout({
   }
 
   return (
-    <div className="main-container">
+    <main className="main-container">
       <TopBar menu={menu} socialLinks={socialLinks} />
       {children}
       <Footer />
-    </div>
+    </main>
   );
 }

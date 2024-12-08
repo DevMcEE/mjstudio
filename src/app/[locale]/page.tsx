@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }
   }
 
-
   return {
     ...data,
     robots: 'index, follow',
@@ -72,6 +71,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(data?.jsonLd) }}
+      />
       <HeroBlock {...data}/>
       <ServicesBlock {...data} />
       <AboutUsBlock {...data} />

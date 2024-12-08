@@ -68,6 +68,32 @@ export type Contact = {
   visiblePhone: string;
   socialLinks: SocialLinks;
 }
+
+export type JsonLd = {
+  "@context"?: string;
+  "@type": string;
+  "@id": string;
+  name: string;
+  description: string;
+  url: string;
+  telephone: string;
+  address: {
+    "@type": string;
+    streetAddress: string;
+    addressLocality: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  openingHours: string[];
+  geo: {
+    "@type": string;
+    latitude: string;
+    longitude: string;
+  };
+  image: string;
+  priceRange: string;
+  sameAs: string[];
+};
 export type ContentItem = {
   pageTitle: string;
   pageSubTitle: string;
@@ -79,7 +105,8 @@ export type ContentItem = {
   aboutUsId: string;
   aboutUs: AboutBlock;
   contactsId: string;
-  contacts: Contact
+  contacts: Contact;
+  jsonLd: JsonLd;
 }
 
 export type Content = {
@@ -104,4 +131,9 @@ export interface BusinessData {
   email: string;
   telephone: string;
   formattedPhone: string;
+  country: string;
+  postalCode: string;
+  city: string;
+  latitude: string;
+  longitude:  string;
 }
