@@ -3,6 +3,7 @@ import "./globals.css";
 import { getLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { Viewport } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const lato = Lato({ 
   weight: ['300' , '400', '700' ],
@@ -37,6 +38,7 @@ export default async function RootLayout({
   const translations = await getMessages();
   return (
     <html lang={locale}>
+      <GoogleTagManager gtmId={process.env.GTM_ID || ''} />
       <body className={`${lato.variable} ${songMuong.variable}`}>
         <NextIntlClientProvider messages={translations}>
           {children}
