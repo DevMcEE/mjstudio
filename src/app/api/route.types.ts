@@ -1,10 +1,13 @@
 import { Locale } from "@/i18n/config.types";
 
+export type MetaDataLocale = {
+  title: string;
+  description: string;
+  keywords: string;
+  image: string;
+}
 export type MetadataType = {
-  [key in Locale]: {
-    title: string;
-    description: string;
-  }
+  [key in Locale]: MetaDataLocale;
 };
 
 export const Route = {
@@ -62,6 +65,7 @@ export type Contact = {
   callToContact: string;
   email: string;
   phone: string;
+  visiblePhone: string;
   socialLinks: SocialLinks;
 }
 export type ContentItem = {
@@ -91,4 +95,13 @@ export interface PageData {
 
 export type PageLocaleData = {
   [key in Locale]: PageData;
+}
+
+export interface BusinessData {
+  companyName: string;
+  companyRegNum: string
+  address: string;
+  email: string;
+  telephone: string;
+  formattedPhone: string;
 }

@@ -1,22 +1,30 @@
 import { Locale } from "@/i18n/config.types";
-import { Content, Menu, MetadataType, PageLocaleData } from "../route.types";
+import { BusinessData, Content, Menu, MetadataType, PageLocaleData } from "../route.types";
 
 export const metadata: MetadataType = {
   [Locale.en]: {
-    title: 'MJ Studio',
-    description: 'Refresh Your Look! Expert Care for Face, Head and Shoulders',
+    title: 'Professional Face Massage & Skincare Treatments in Tallinn | MJ Studio',
+    description: 'Relax and rejuvenate at MJ Studio in Tallinn\'s Old Town. Certified therapists from Thailand and India offer face massages, scrubs, and comprehensive treatments tailored for radiant skin. Book your appointment today!',
+    keywords: 'face massage Tallinn, professional massage Tallinn, skincare treatments, Thai massage, face scrubs, Old Town massage studio, hair treatment Tallinn, certified therapists Estonia',
+    image: '/aboutUsImage.JPG',
   },
   [Locale.ru]: {
-    title: 'MJ Studio',
-    description: 'Освежите свой образ! Профессиональный уход за лицом, головой и плечами',
+    title: 'Профессиональный массаж лица и уход за кожей в Таллинне | MJ Studio',
+    description: 'Расслабьтесь и омолодитесь в студии MJ в Старом городе Таллинна. Сертифицированные терапевты из Таиланда и Индии предлагают массаж лица, скрабы и комплексные процедуры для сияющей кожи. Запишитесь на прием уже сегодня!',
+    keywords: 'массаж лица Таллинн, профессиональный массаж Таллинн, уход за кожей, тайский массаж, скрабы для лица, студия массажа в Старом городе, уход за волосами Таллинн, сертифицированные терапевты Эстония',
+    image: '/aboutUsImage.JPG'
   },
   [Locale.et]: {
-    title: 'MJ Studio',
-    description: 'Värskenda oma välimust! Professionaalne näo-, pea- ja õlahooldus',
+    title: 'Professionaalne näomassaaž ja nahahooldus Tallinnas | MJ Studio',
+    description: 'Lõõgastuge ja noorendage end MJ stuudios Tallinna vanalinnas. Tai ja India sertifitseeritud terapeudid pakuvad näomassaaže, koorimisi ja terviklikke protseduure, mis on loodud särava naha jaoks. Broneerige aeg juba täna!',
+    keywords: 'näomassaaž Tallinn, professionaalne massaaž Tallinn, nahahooldus, Tai massaaž, näokoorimine, vanalinna massaažistuudio, juuksehooldus Tallinn, sertifitseeritud terapeudid Eesti',
+    image: '/aboutUsImage.JPG'
   },
   [Locale.th]: {
-    title: 'MJ Studio',
-    description: 'เปลี่ยนลุคของคุณให้สดใหม่! การดูแลมืออาชีพสำหรับใบหน้า ศีรษะ และไหล่',
+    title: 'บริการนวดหน้าและดูแลผิวพรรณระดับมืออาชีพในทาลลินน์ | MJ Studio',
+    description: 'ผ่อนคลายและฟื้นฟูผิวของคุณที่ MJ Studio ใจกลางเมืองเก่าทาลลินน์ นักบำบัดผู้เชี่ยวชาญจากไทยและอินเดียให้บริการนวดหน้า สครับ และทรีทเมนต์ครบวงจรเพื่อผิวสวยสดใส จองคิวของคุณวันนี้!',
+    keywords: 'นวดหน้า ทาลลินน์, บริการนวดระดับมืออาชีพ ทาลลินน์, การดูแลผิวพรรณ, นวดไทย, สครับหน้า, สตูดิโอนวด เมืองเก่า, ทรีทเมนต์ผม ทาลลินน์, นักบำบัดผู้เชี่ยวชาญ เอสโตเนีย',
+    image: '/aboutUsImage.JPG'
   },
 } as const;
 
@@ -45,7 +53,7 @@ export const menu: Menu = {
 
 export const SocialLinks = {
   facebook: 'https://www.facebook.com/profile.php?id=61568231552804',
-  instagram: 'https://www.instagram.com/mjstudiofacemassage/'
+  instagram: 'https://www.instagram.com/mjstudio.ee/'
 }
 
 const Price = {
@@ -71,12 +79,21 @@ const Price = {
   }
 }
 
+export const businessData: BusinessData = {
+  companyName: "ATMW Invest OÜ",
+  companyRegNum: "16859397",
+  address: "Viru 9, TALLINN",
+  email: "mjstudio.ee@gmail.com",
+  telephone: "(+372)58494331",
+  formattedPhone: "(+372) 58494331"
+}
+
 export const content: Content = {
   [Locale.en]: {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'face massage',
     pageDescription: 'Expert Care for Face, Head and Shoulders',
-    address: 'Viru 9, TALLINN',
+    address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.en][0].hash,
     services: [
@@ -135,17 +152,18 @@ export const content: Content = {
     },
     contactsId: menu[Locale.en][2].hash,
     contacts: {
-      companyName: 'ATMW Invest OÜ',
-      companyRegNum: '16859397',
-      companyAddress: 'Viru 9, TALLINN',
+      companyName: businessData.companyName,
+      companyRegNum: businessData.companyRegNum,
+      companyAddress: businessData.address,
       workingHours: [
         { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
         { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
       ],
       bookingNote: 'NB! Our studio operates by appointment only—therapists are available exclusively during booked sessions.',
       callToContact: 'Schedule your appointment by contacting us',
-      email: 'mjstudio.ee@gmail.com',
-      phone: '(+372)58494331',
+      email: businessData.email,
+      phone: businessData.telephone,
+      visiblePhone: `${businessData.formattedPhone} (eng | thai)`,
       socialLinks: SocialLinks
     }
   },
@@ -153,7 +171,7 @@ export const content: Content = {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'массаж лица',
     pageDescription: 'Профессиональный уход за лицом, головой и плечами',
-    address: 'Viru 9, ТАЛЛИНН',
+    address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.ru][0].hash,
     services: [
@@ -211,9 +229,9 @@ export const content: Content = {
     },
     contactsId: menu[Locale.ru][2].hash,
     contacts: {
-      companyName: 'ATMW Invest OÜ',
-      companyRegNum: '16859397',
-      companyAddress: 'Viru 9, TALLINN',
+      companyName: businessData.companyName,
+      companyRegNum: businessData.companyRegNum,
+      companyAddress: businessData.address,
       workingHours: [
         { 
           weekdays: 'Пн - Пт', 
@@ -225,8 +243,9 @@ export const content: Content = {
       ],
       bookingNote: 'NB! Наша студия работает только по предварительной записи — терапевты доступны исключительно во время забронированных сеансов.',
       callToContact: 'Запишитесь на прием, связавшись с нами через:',
-      email: 'mjstudio.ee@gmail.com',
-      phone: '(+372)58494331',
+      email: businessData.email,
+      phone: businessData.telephone,
+      visiblePhone: `${businessData.formattedPhone} (англ | тай)`,
       socialLinks: SocialLinks
     }
   },
@@ -234,7 +253,7 @@ export const content: Content = {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'Näomassaaž',
     pageDescription: 'Professionaalne näo-, pea- ja õlahooldus',
-    address: 'Viru 9, TALLINN',
+    address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.et][0].hash,
     services: [
@@ -292,17 +311,18 @@ export const content: Content = {
     },
     contactsId: menu[Locale.et][2].hash,
     contacts: {
-      companyName: 'ATMW Invest OÜ',
-      companyRegNum: '16859397',
-      companyAddress: 'Viru 9, TALLINN',
+      companyName: businessData.companyName,
+      companyRegNum: businessData.companyRegNum,
+      companyAddress: businessData.address,
       workingHours: [
         { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
         { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
       ],
       bookingNote: 'NB! Meie stuudio töötab ainult eelnevalt kokkuleppel — terapeutidel on saadaval ainult broneeritud seansside ajal.',
       callToContact: 'Broneeri aeg, võttes meiega ühendust',
-      email: 'mjstudio.ee@gmail.com',
-      phone: '(+372)58494331',
+      email: businessData.email,
+      phone: businessData.telephone,
+      visiblePhone: `${businessData.formattedPhone} (eng | tai)`,
       socialLinks: SocialLinks
     }
   },
@@ -310,7 +330,7 @@ export const content: Content = {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'นวดหน้า',
     pageDescription: 'การดูแลมืออาชีพสำหรับใบหน้า ศีรษะ และไหล่',
-    address: 'Viru 9, ชั้น 2, 1\nทาลลินน์, เอสโตเนีย',
+    address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.th][0].hash,
     services: [
@@ -368,17 +388,18 @@ export const content: Content = {
     },
     contactsId: menu[Locale.th][2].hash,
     contacts: {
-      companyName: 'ATMW Invest OÜ',
-      companyRegNum: '16859397',
-      companyAddress: 'Viru 9, TALLINN',
+      companyName: businessData.companyName,
+      companyRegNum: businessData.companyRegNum,
+      companyAddress: businessData.address,
       workingHours: [
         { weekdays: 'Mon - Fri', hours: '10:00 - 18:00' },
         { weekdays: 'Sat - Sun', hours: '12:00 - 18:00' },
       ],
       bookingNote: 'หมายเหตุ! สตูดิโอของเราเปิดให้บริการตามการนัดหมายเท่านั้น—นักบำบัดมีให้บริการเฉพาะในช่วงเวลาที่มีการจองเท่านั้น.',
       callToContact: 'กำหนดการนัดหมายของคุณโดยการติดต่อเรา',
-      email: 'mjstudio.ee@gmail.com',
-      phone: '(+372)58494331',
+      email: businessData.email,
+      phone: businessData.telephone,
+      visiblePhone: `${businessData.formattedPhone} (eng | thai)`,
       socialLinks: SocialLinks
     }
   }
