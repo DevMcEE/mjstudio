@@ -4,11 +4,13 @@ import { HeroBlock } from "./_blocks/HeroBlock";
 import { ServicesBlock } from "./_blocks/ServicesBlock";
 import { AboutUsBlock } from "./_blocks/AboutUsBlock";
 import { ContactsBlock } from "./_blocks/ContactsBlock";
+import { Locale, locales } from '@/i18n/config.types';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
   let data = {} as MetaDataLocale;
+
   try {
     data = await fetch(`${process.env.API_URL}/${Route.homePageMetadata}`, {
       headers: {
@@ -19,15 +21,29 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     console.error('Failed to fetch metadata:', error);
   };
 
+  const languagesUrls = {} as Record<Locale, string>;
+
+  if (locales.length) {
+    for (const locale of locales) {
+      languagesUrls[locale] = `/${locale}`;
+    }
+  }
+
+
   return {
     ...data,
     robots: 'index, follow',
     authors: ['MJ Studio'],
+    metadataBase: new URL(process.env.BASE_URL|| '/'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: languagesUrls,
+    },
     openGraph: {
       type: 'website',
       title: data.title,
       description: data.description,
-      image: data.image,
+      image: `${new URL(process.env.BASE_URL|| '/')}/${data.image}`,
       images: [
         {
           url: data.image,
@@ -35,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           height: 600,
         },
       ],
-    }
+    },
   };
 }
 
