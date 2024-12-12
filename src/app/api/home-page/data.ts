@@ -61,7 +61,7 @@ const Price = {
     min60: '50',
     min90: '60',
   },
-  faceScrap: {
+  faceScrub: {
     min60: '55',
     min90: '65',
   },
@@ -111,16 +111,16 @@ export const content: Content = {
         ],
       },
       {
-        name: 'Face scrap',
-        description: 'Clean face, Face scrap, Face massage, Head & Shoulder massage, Face Ozone',
+        name: 'Face scrub',
+        description: 'Clean face, Face scrub, Face massage, Head & Shoulder massage, Face Ozone Treatment',
         prices: [
-          { unit: '60min', price: Price.faceScrap.min60 },
-          { unit: '90min', price: Price.faceScrap.min90 },
+          { unit: '60min', price: Price.faceScrub.min60 },
+          { unit: '90min', price: Price.faceScrub.min90 },
         ]
       },
       {
         name: 'MJ Course Treatment Massage',
-        description: 'Clean face, Face scrap, Face massage treatment, head & shoulder massage, Face Ozone',
+        description: 'Clean face, Face scrub, Face massage treatment, head & shoulder massage, Face Ozone',
         prices: [
           { unit: '90min', price: Price.mjCourseMassage.min90 },
           { unit: '120min', price: Price.mjCourseMassage.min120 },
@@ -220,8 +220,8 @@ export const content: Content = {
         name: 'Скраб лица',
         description: 'Чистка лица, Скраб лица, Массаж лица, Массаж головы и плеч, Озон для лица',
         prices: [
-          { unit: '60мин', price: Price.faceScrap.min60 },
-          { unit: '90мин', price:  Price.faceScrap.min90 },
+          { unit: '60мин', price: Price.faceScrub.min60 },
+          { unit: '90мин', price:  Price.faceScrub.min90 },
         ]
       },
       {
@@ -330,8 +330,8 @@ export const content: Content = {
         name: 'Näokoorimine',
         description: 'Näo puhastamine, Näokoorimine, Näomassaaž, Pea- ja õlamassaaž, Näo osoon',
         prices: [
-          { unit: '60min', price: Price.faceScrap.min60 },
-          { unit: '90min', price: Price.faceScrap.min90 },
+          { unit: '60min', price: Price.faceScrub.min60 },
+          { unit: '90min', price: Price.faceScrub.min90 },
         ]
       },
       {
@@ -435,8 +435,8 @@ export const content: Content = {
         name: 'ขัดหน้า',
         description: 'ทำความสะอาดหน้า, ขัดหน้า, นวดหน้า, นวดศีรษะและไหล่, นวดหน้าอกและมือ',
         prices: [
-          { unit: '60นาที', price: Price.faceScrap.min60 },
-          { unit: '90นาที', price: Price.faceScrap.min90 },
+          { unit: '60นาที', price: Price.faceScrub.min60 },
+          { unit: '90นาที', price: Price.faceScrub.min90 },
         ]
       },
       {
