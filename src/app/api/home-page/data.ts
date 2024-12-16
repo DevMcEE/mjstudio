@@ -171,6 +171,10 @@ export const content: Content = {
         ]
       },
     ],
+    extraServices: [
+      'Minimalistic tattoo',
+      'Eyebrow tattoo',
+    ],
     aboutUsId: menu[Locale.en][1].hash,
     aboutUs: {
 
@@ -294,6 +298,10 @@ export const content: Content = {
           { unit: '120мин', price:  Price.hotStoneMassage.min120 },
         ]
       },
+    ],
+    extraServices: [
+      'Минималистическая татуировка',
+      'Татуаж бровей',
     ],
     aboutUsId: menu[Locale.ru][1].hash,
     aboutUs: {
@@ -423,6 +431,10 @@ export const content: Content = {
         ]
       },
     ],
+    extraServices: [
+      'Minimaalne tätoveering',
+      'Kulmude tätoveering',
+    ],
     aboutUsId: menu[Locale.et][1].hash,
     aboutUs: {
       title: 'Meist',
@@ -545,6 +557,10 @@ export const content: Content = {
           { unit: '120นาที', price:  Price.hotStoneMassage.min120 },
         ]
       },
+    ],
+    extraServices: [
+      'Tattoo สไตล์มินิมอล',
+      'Tattoo คิ้ว',
     ],
     aboutUsId: menu[Locale.th][1].hash,
     aboutUs: {

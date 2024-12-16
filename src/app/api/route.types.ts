@@ -102,6 +102,7 @@ export type ContentItem = {
   currency: string;
   serviceBlockId: string;
   services: Service[];
+  extraServices: string[];
   aboutUsId: string;
   aboutUs: AboutBlock;
   contactsId: string;

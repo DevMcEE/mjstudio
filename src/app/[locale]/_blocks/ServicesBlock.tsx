@@ -5,10 +5,11 @@ import { ServiceItem } from "../_components/ServiceItem";
 
 interface ServicesBlockProps {
   services?: Service[];
+  extraServices?: string[];
   currency?: string;
   serviceBlockId?: string;
 };
-export const ServicesBlock = ({ services = [], currency = '', serviceBlockId='services'}: ServicesBlockProps) => {
+export const ServicesBlock = ({ services = [], extraServices= [], currency = '', serviceBlockId='services'}: ServicesBlockProps) => {
   const t = useTranslations();
   return (
     <div className={styles.serviceBlockContainer} id={serviceBlockId}>
@@ -21,6 +22,11 @@ export const ServicesBlock = ({ services = [], currency = '', serviceBlockId='se
           { services.map((service, index) => (
             <ServiceItem currency={currency} key={index} {...service} />
           ))}
+          {
+            extraServices?.map((service, index) => (
+              <ServiceItem currency={currency} key={index} name={service} description="" prices={[]}/>
+            ))
+          }
         </div>
       </div>
 

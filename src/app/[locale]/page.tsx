@@ -5,6 +5,7 @@ import { ServicesBlock } from "./_blocks/ServicesBlock";
 import { AboutUsBlock } from "./_blocks/AboutUsBlock";
 import { ContactsBlock } from "./_blocks/ContactsBlock";
 import { Locale, locales } from '@/i18n/config.types';
+import { headers } from "next/headers";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -57,7 +58,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   let data: ContentItem | null = null;
   const { locale } = await params;
-  
+  const nonce = (await headers()).get('x-nonce') || '';
+   
   try {
     data = await fetch(`${process.env.API_URL}/${Route.homePageBody}`, {
       cache: 'no-cache',
@@ -72,6 +74,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <div className={styles.page}>
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(data?.jsonLd) }}
       />
