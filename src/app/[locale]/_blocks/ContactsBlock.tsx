@@ -24,10 +24,9 @@ export const ContactsBlock = ({ contacts, contactsId = 'contacts' }: ContactsBlo
         <GoogleMapsEmbed
           apiKey={googleMapsApiKey}
           height={400}
-          width='100%;'
+          width={600}
           mode="place"
           zoom="16"
-          style="width: 100%; height: 400px;"
           q={companyAddress}
         />
         </div>
