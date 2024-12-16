@@ -86,7 +86,7 @@ const Price = {
     min60: '65',
     min90: '85',
     min120: '105',
-  }
+  },
 }
 
 export const businessData: BusinessData = {
@@ -107,7 +107,7 @@ export const content: Content = {
   [Locale.en]: {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'face massage',
-    pageDescription: 'Expert Care for Face, Head and Shoulders',
+    pageDescription: 'Expert Care for Face, Head and Body',
     address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.en][0].hash,
@@ -231,7 +231,7 @@ export const content: Content = {
   [Locale.ru]: {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'массаж лица',
-    pageDescription: 'Профессиональный уход за лицом, головой и плечами',
+    pageDescription: 'Профессиональный уход за лицом, головой и телом',
     address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.ru][0].hash,
@@ -359,7 +359,7 @@ export const content: Content = {
   [Locale.et]: {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'Näomassaaž',
-    pageDescription: 'Professionaalne näo-, pea- ja õlahooldus',
+    pageDescription: 'Professionaalne näo-, pea- ja kehahooldus',
     address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.et][0].hash,
@@ -482,7 +482,7 @@ export const content: Content = {
   [Locale.th]: {
     pageTitle: 'MJ Studio',
     pageSubTitle: 'นวดหน้า',
-    pageDescription: 'การดูแลมืออาชีพสำหรับใบหน้า ศีรษะ และไหล่',
+    pageDescription: 'ดูแลเชี่ยวชาญสำหรับหน้า, ศีรษะและร่างกาย',
     address: businessData.address,
     currency: '€',
     serviceBlockId: menu[Locale.th][0].hash,

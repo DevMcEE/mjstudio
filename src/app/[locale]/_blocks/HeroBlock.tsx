@@ -34,7 +34,6 @@ export const HeroBlock = ({
       <div className={styles.heroText}>
         <div className={styles.pageTitleContainer}>
           <h1 className={styles.pageTitle}>{pageTitle}</h1>
-          <h2 className={styles.pageSubtitle}>{pageSubTitle}</h2>
         </div>
 
         <p className={styles.pageDescription}>{pageDescription}</p>
