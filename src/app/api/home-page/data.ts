@@ -76,6 +76,16 @@ const Price = {
   washHairs: {
     short: '25',
     long: '35',
+  },
+  fullBodyScrub: {
+    min60: '55',
+    min90: '75',
+    min120: '120',
+  },
+  hotStoneMassage: {
+    min60: '65',
+    min90: '85',
+    min120: '105',
   }
 }
 
@@ -140,6 +150,24 @@ export const content: Content = {
         prices: [
           { unit: 'Short hair', price:  Price.washHairs.short },
           { unit: 'Long Hair ', price:   Price.washHairs.long },
+        ]
+      },
+      {
+        name: 'Full Body Scrub',
+        description: '',
+        prices: [
+          { unit: '60min', price:  Price.fullBodyScrub.min60 },
+          { unit: '90min', price:  Price.fullBodyScrub.min90 },
+          { unit: '120min', price:  Price.fullBodyScrub.min120 },
+        ]
+      },
+      {
+        name: 'Hot Stone Massage',
+        description: '',
+        prices: [
+          { unit: '60min', price:  Price.hotStoneMassage.min60 },
+          { unit: '90min', price:  Price.hotStoneMassage.min90 },
+          { unit: '120min', price:  Price.hotStoneMassage.min120 },
         ]
       },
     ],
@@ -246,6 +274,24 @@ export const content: Content = {
         prices: [
           { unit: 'Короткие волосы', price: Price.washHairs.short },
           { unit: 'Длинные волосы', price: Price.washHairs.long },
+        ]
+      },
+      {
+        name: 'Полный скраб тела',
+        description: '',
+        prices: [
+          { unit: '60мин', price:  Price.fullBodyScrub.min60 },
+          { unit: '90мин', price:  Price.fullBodyScrub.min90 },
+          { unit: '120мин', price:  Price.fullBodyScrub.min120 },
+        ]
+      },
+      {
+        name: 'Массаж горячими камнями',
+        description: '',
+        prices: [
+          { unit: '60мин', price:  Price.hotStoneMassage.min60 },
+          { unit: '90мин', price:  Price.hotStoneMassage.min90 },
+          { unit: '120мин', price:  Price.hotStoneMassage.min120 },
         ]
       },
     ],
@@ -358,6 +404,24 @@ export const content: Content = {
           { unit: 'Pikkad juuksed', price: Price.washHairs.long },
         ]
       },
+      {
+        name: 'Terve keha koorimine',
+        description: '',
+        prices: [
+          { unit: '60min', price:  Price.fullBodyScrub.min60 },
+          { unit: '90min', price:  Price.fullBodyScrub.min90 },
+          { unit: '120min', price:  Price.fullBodyScrub.min120 },
+        ]
+      },
+      {
+        name: 'Kuumakivimassaaž',
+        description: '',
+        prices: [
+          { unit: '60min', price:  Price.hotStoneMassage.min60 },
+          { unit: '90min', price:  Price.hotStoneMassage.min90 },
+          { unit: '120min', price:  Price.hotStoneMassage.min120 },
+        ]
+      },
     ],
     aboutUsId: menu[Locale.et][1].hash,
     aboutUs: {
@@ -461,6 +525,24 @@ export const content: Content = {
         prices: [
           { unit: 'ผมสั้น', price: Price.washHairs.short },
           { unit: 'ผมยาว', price: Price.washHairs.long },
+        ]
+      },
+      {
+        name: 'ขัดทั้งตัว',
+        description: '',
+        prices: [
+          { unit: '60นาที', price:  Price.fullBodyScrub.min60 },
+          { unit: '90นาที', price:  Price.fullBodyScrub.min90 },
+          { unit: '120นาที', price:  Price.fullBodyScrub.min120 },
+        ]
+      },
+      {
+        name: 'นวดด้วยหินร้อน',
+        description: '',
+        prices: [
+          { unit: '60นาที', price:  Price.hotStoneMassage.min60 },
+          { unit: '90นาที', price:  Price.hotStoneMassage.min90 },
+          { unit: '120นาที', price:  Price.hotStoneMassage.min120 },
         ]
       },
     ],
