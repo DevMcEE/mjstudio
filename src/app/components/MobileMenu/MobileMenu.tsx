@@ -5,6 +5,7 @@ import { MenuModal } from "../MenuModal";
 import { MenuIcon } from "../icons";
 import { IconButton } from "../IconButton";
 import styles from './MobileMenu.module.css';
+
 interface MobileMenuProps {
   menu: MenuItem[];
   currentLocale: string;

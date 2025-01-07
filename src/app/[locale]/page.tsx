@@ -1,4 +1,3 @@
-import styles from "./page.module.css";
 import { ContentItem, MetaDataLocale, Route } from "../api/route.types";
 import { HeroBlock } from "./_blocks/HeroBlock";
 import { ServicesBlock } from "./_blocks/ServicesBlock";
@@ -72,7 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }
 
   return (
-    <div className={styles.page}>
+    <>
       <script
         nonce={nonce}
         type="application/ld+json"
@@ -82,6 +81,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <ServicesBlock {...data} />
       <AboutUsBlock {...data} />
       <ContactsBlock {...data} />
-    </div>
+    </>
   );
 }

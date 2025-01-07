@@ -3,14 +3,13 @@ import Image from "next/image";
 
 interface HeroBlockProps {
   pageTitle?: string;
-  pageSubTitle?: string;
   pageDescription?: string;
   address?: string;
+  pageSubTitle?: string;
 };
 
 export const HeroBlock = ({
   pageTitle = '',
-  pageSubTitle = '',
   pageDescription = '',
   address = ''
 }: HeroBlockProps) => {

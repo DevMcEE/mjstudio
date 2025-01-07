@@ -7,15 +7,19 @@
   flex-direction: column;
 }
 
-.languageSwitcher a {
-  font-size: 1.1rem;
+.languageSwitcher button {
+  font-size: 0.9rem;
   padding: 1rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 .regularLink {
   text-decoration: none;
 }
 
+.languageSwitcher button:hover,
 .activeLink {
   text-decoration: underline;
 }

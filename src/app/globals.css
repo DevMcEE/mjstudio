@@ -47,3 +47,15 @@ a {
 .map-container div {
   width: 100%;
 }
+
+.not-foun-page-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 108px);
+  padding-bottom: calc(env(safe-area-inset-bottom));
+  position: relative;
+  color: var(--fontColor);
+}

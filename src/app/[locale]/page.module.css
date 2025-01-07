@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 108px);
   padding-bottom: calc(env(safe-area-inset-bottom));
   position: relative;
 }

@@ -1,6 +1,7 @@
 import { MenuItem, Route, SocialLinks } from "../api/route.types";
 import { Footer } from "../components/Footer";
 import { TopBar } from "../components/TopBar/TopBar";
+import styles from "./page.module.css";
 
 export default async function PageLayout({
   children, // will be a page or nested layout
@@ -18,6 +19,7 @@ export default async function PageLayout({
       cache: 'no-cache',
       headers: { 'Accept-Language': locale }
     }).then((res) => res.json());
+    
     menu = response.menu; 
     socialLinks = response.socialLinks;
   } catch (error) {
@@ -27,7 +29,9 @@ export default async function PageLayout({
   return (
     <main className="main-container">
       <TopBar menu={menu} socialLinks={socialLinks} />
-      {children}
+      <div className={styles.page}>
+        {children}
+      </div>
       <Footer />
     </main>
   );
