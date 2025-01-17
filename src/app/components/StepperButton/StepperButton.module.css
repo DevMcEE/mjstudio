@@ -1,0 +1,10 @@
+.stepperButton{
+    background: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+.stepperButtonImage {
+    width: 60%;
+    height: 60%;
+}

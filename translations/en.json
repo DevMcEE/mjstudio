@@ -7,5 +7,14 @@
   "contacts": {
     "title": "Contact",
     "workingHoursTitle": "Working hours"
+  },
+  "booking":{
+    "booking":"Booking",
+    "service":"Service",
+    "date_time":"Date & Time",
+    "contacts":"Contacts",
+    "finish":"Finish",
+    "submit":"Confirm",
+    "next":"Next"
   }
 }

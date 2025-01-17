@@ -7,5 +7,14 @@
   "contacts": {
     "title": "Kontakt",
     "workingHoursTitle": "Tööaeg"
+  },
+  "booking":{
+    "booking":"Broneering",
+    "service":"Teenused",
+    "date_time":"Kuupäev ja Aeg",
+    "contacts":"Kontakt",
+    "finish":"Kinnita",
+    "submit":"Kinnita",
+    "next":"Edasi"
   }
 }

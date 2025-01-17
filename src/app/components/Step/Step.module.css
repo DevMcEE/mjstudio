@@ -1,0 +1,57 @@
+.stepSection {
+    display: flex;
+    flex-direction: column;
+    transition: flex 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.stepSection.inactive {
+    flex: 0 0 40px;
+}
+
+.stepSection.active {
+    height: calc(100vh / 15);
+    flex-grow: 0.8;
+}
+
+.stepItemDetails {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 8px 0;
+}
+
+.stepItemTitle {
+    width: 100%;
+    line-height: 0;
+    padding: 10px 0;
+    padding-left: 8px;
+    color: black;
+    font-size: 0.9rem;
+    text-wrap: nowrap;
+    word-break: break-word;
+}
+
+.stepIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.stepFormContainer {
+    margin: 0 0 0 0.6rem;
+    border-left: 1px solid #bdbdbd;
+    flex-grow: 1;
+}
+
+.lastContainer {
+    border-left: none;
+}
+
+.stepBorder {
+    margin: 0 0 0 0.6rem;
+    min-height: 24px;
+    border-left: 1px solid #bdbdbd;
+}

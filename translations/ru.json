@@ -7,5 +7,14 @@
   "contacts": {
     "title": "Контакты",
     "workingHoursTitle": "Рабочие часы"
+  },
+  "booking":{
+    "booking":"Бронирование",
+    "service":"Услуги",
+    "date_time":"Дата и время",
+    "contacts":"Контактные данные",
+    "finish":"Подтвердить",
+    "submit":"Подтвердить",
+    "next":"Далее"
   }
 }

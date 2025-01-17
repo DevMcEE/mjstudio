@@ -1,4 +1,34 @@
 .main{
+  position: relative;
   color: white;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.stepper{
+  background: white;
+  position:relative;
+  width:100vw;
+  height:calc(100vh - 70px);
+  min-width: 150px;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.stepperButtonContainer {
+  z-index: 100;
+  position: absolute;
+  top:1.1rem;
+  left:2rem;
+}
+
+
+@media screen and (min-width: 768px) {
+  .stepper{
+    height:calc(100vh - 180px);
+  }
+  
 }

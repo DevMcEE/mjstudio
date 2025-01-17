@@ -7,5 +7,14 @@
   "contacts": {
     "title": "ติดต่อ",
     "workingHoursTitle": "เวลาทำงาน"
+  },
+  "booking":{
+    "booking":"การจอง",
+    "service":"บริการ",
+    "date_time":"วันที่และเวลา",
+    "contacts":"ผู้ติดต่อ",
+    "finish":"เสร็จสิ้น",
+    "submit":"ยืนยัน",
+    "next":"ถัดไป"
   }
 }
