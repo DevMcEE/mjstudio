@@ -11,22 +11,29 @@ export interface TimeCellContainerProps{
     timeData: exportTimeData,
 }
 export type timesGroups = {
-    [key in times]: TimeCellProps[]
+    [key in times]: {time:DateTime}[]
 }
 interface dateTime {id: number, date:DateTime}
 
 export const TimeCellsContainer = ({timeData}: TimeCellContainerProps) => {
     const [currentDay, setCurrentDay] = useState<days>(DateTime.now().toFormat("cccc").toLowerCase() as days);
+    const [currentTime, setCurrentTime] = useState<string>();
+
 
     useEffect(() => {
         EventEmitterClient.on("OnDaySelect", (data) => {
             const dateTime = data as dateTime;
             setCurrentDay(dateTime.date.toFormat('cccc').toLowerCase() as days);
+            setCurrentTime("");
         });
         return () => {
             EventEmitterClient.unsubscribe("OnDaySelect");
         };
     }, []);
+
+    useEffect(()=>{
+        EventEmitterClient.emit("OnTimeSelect", currentTime)
+    }, [currentTime])
 
     const timeCells = useMemo<timesGroups>(()=>{
         const returnTimeCells = {
@@ -64,17 +71,17 @@ export const TimeCellsContainer = ({timeData}: TimeCellContainerProps) => {
         <div className={styles.timeGroupsContainer}>
             <p className={`${styles.timeCellHeading}`}>Morning</p>
             <div className={styles.timeCellsContainer} >
-                {( timeCells.morning.length !== 0 ? timeCells.morning.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} time={element.time}/>)) : "No time available" )}
+                {( timeCells.morning.length !== 0 ? timeCells.morning.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} onClick={() => setCurrentTime(element.time.toFormat("HH:mm"))} time={element.time} selected={currentTime === element.time.toFormat("HH:mm")}/>)) : "No time available" )}
             </div>
             
             <p className={`${styles.timeCellHeading}`}>Afternoon</p>
             <div className={styles.timeCellsContainer}>
-                {( timeCells.afternoon.length !== 0 ? timeCells.afternoon.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} time={element.time}/>)) : "No time available" )}
+                {( timeCells.afternoon.length !== 0 ? timeCells.afternoon.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} onClick={() => setCurrentTime(element.time.toFormat("HH:mm"))} time={element.time} selected={currentTime === element.time.toFormat("HH:mm")}/>)) : "No time available" )}
             </div>
 
             <p className={`${styles.timeCellHeading}`}>Evening</p>
             <div className={styles.timeCellsContainer}>
-                {( timeCells.evening.length !== 0 ? timeCells.evening.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} time={element.time}/>)) : "No time available" )}
+                {( timeCells.evening.length !== 0 ? timeCells.evening.map((element)=>(<TimeCell key={element.time.toFormat("HH:mm")} onClick={() => setCurrentTime(element.time.toFormat("HH:mm"))} time={element.time} selected={currentTime === element.time.toFormat("HH:mm")}/>)) : "No time available" )}
             </div>
         </div>
     )

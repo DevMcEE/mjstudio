@@ -3,6 +3,8 @@ import { DatePicker } from "@/app/components/CalendarWidget/DatePicker";
 import { exportTimeData } from "@/app/api/booking-page/route.types";
 import { Route } from "@/app/api/route.types";
 import { TimeCellsContainer } from "@/app/components/CalendarWidget/TimeCellsContainer";
+import EventEmitterClient from "@/app/services/EventEmitterClient";
+
 export default async function BookingPage({ params }: { params: Promise<{ locale: string }> }) {
     let timeData = {} as exportTimeData;
     try{

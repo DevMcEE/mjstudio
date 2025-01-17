@@ -16,6 +16,7 @@ export class DayCellsMap{
     cellsMap: cell[];
     rowCellsLimit: number;
     coordinates: coordinates;
+    daysInWeek: number;
 
     constructor(rowCellsLimit: number){
         this.cellsMap = [];
@@ -34,6 +35,7 @@ export class DayCellsMap{
         }
         this.pushMany(dates);
         this.coordinates.end = this.rowCellsLimit;
+        this.daysInWeek = 7;
     }
 
     getRowForView(){
@@ -46,28 +48,29 @@ export class DayCellsMap{
         if(side === "right"){
             const lastCell = this.cellsMap[this.cellsMap.length - 1];
             let date = lastCell.date;
-            for(let i = 0; i < this.rowCellsLimit; i++){
+            const daysDiff = this.daysInWeek + 1 - this.cellsMap[this.coordinates.start].date.weekday;
+            for(let i = 0; i < daysDiff; i++){
                 date = date.plus({day:1});
                 dates.push(date);
             }
             this.pushMany(dates);
-
-            this.coordinates.start += this.rowCellsLimit;
-            this.coordinates.end += this.rowCellsLimit;
+            
+            
+            this.coordinates.start += daysDiff;
+            this.coordinates.end += daysDiff;
         }
         if(side === "left"){
-            if(this.coordinates.start - this.rowCellsLimit < 0 || this.coordinates.end - this.rowCellsLimit < 0){
-                const firstCell = this.cellsMap[0];
-                let date = firstCell.date;
-                for(let i = 0; i < this.rowCellsLimit; i++){
-                    date = date.minus({day:1});
-                    dates.push(date);
+            if(this.coordinates.start != 0){
+                if(this.coordinates.start - this.rowCellsLimit < 0){
+                    this.coordinates.start = 0;
+                    this.coordinates.end = this.rowCellsLimit;
                 }
-                this.unshiftMany(dates);
-            }
+                else{
+                    this.coordinates.start -= this.rowCellsLimit;
+                    this.coordinates.end -= this.rowCellsLimit;
+                }
 
-            this.coordinates.start -= this.rowCellsLimit;
-            this.coordinates.end -= this.rowCellsLimit;
+            }
         }
         EventEmitterClient.emit("DatePickerRowUpdated", null);
     }
