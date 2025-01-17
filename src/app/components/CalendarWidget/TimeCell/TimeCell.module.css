@@ -1,0 +1,9 @@
+.timeCell{
+    width:71px;
+    height:33px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: #ffff;
+    color: #000;
+    text-align: center;
+}

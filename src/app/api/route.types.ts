@@ -16,6 +16,7 @@ export const Route = {
   homePageBody: 'api/home-page/body',
   homePageFooter: 'api/home-page/footer',
   homePageMenu: 'api/home-page/menu',
+  bookingPageWorkingTime: 'api/booking-page/working-time',
 } as const;
 
 export type MenuItem = {
@@ -138,3 +139,4 @@ export interface BusinessData {
   latitude: string;
   longitude:  string;
 }
+

@@ -51,4 +51,4 @@ export const LanguageSwitcher = ({ currentLocale }: LanguageSwitcherProps) => {
       ))}
     </div>
   );
-}
+};

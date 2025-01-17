@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.0.3",
+    "@types/luxon": "^3.4.2",
+    "luxon": "^3.5.0",
     "next": "15.0.3",
     "next-intl": "^3.25.1",
     "react": "19.0.0",
