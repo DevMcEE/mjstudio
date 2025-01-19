@@ -5,5 +5,5 @@ export const MenuIcon = () => {
       <line y1="13.5" x2="30" y2="13.5" stroke="white" strokeWidth="3"/>
       <line y1="25.5" x2="30" y2="25.5" stroke="white" strokeWidth="3"/>
     </svg>
-  )
-}
+  );
+};
