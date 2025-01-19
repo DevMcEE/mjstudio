@@ -1,10 +1,10 @@
 import { Locale, locales } from '@/i18n/config.types';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { data, SocialLinks } from '../data';
+import { NextApiRequest } from 'next';
 
-
-export async function GET(request: NextRequest) {
-  let locale = (request.headers.get('accept-language') as Locale) || Locale.en;  
+export async function GET(request: NextApiRequest) {
+  let locale = (request.headers['accept-language']) as Locale || Locale.en;  
 
   if (!locales.includes(locale)) {
     locale = Locale.en;
@@ -13,8 +13,9 @@ export async function GET(request: NextRequest) {
   try {
     return NextResponse.json(
       { 
-        menu: data[locale].menu,
-        socialLinks: SocialLinks},
+        menu: data[locale]?.menu || data[Locale.en].menu,
+        socialLinks: SocialLinks
+      },
       { status: 200 }
     );
   } catch (error) {
