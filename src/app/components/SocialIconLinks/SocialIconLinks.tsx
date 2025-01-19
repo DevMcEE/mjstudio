@@ -11,8 +11,8 @@ export const SocialIconLinks = ({ socialLinks }: SocialIconLinksProps) => {
 
   return Object.entries(socialLinks).map(([socialNetwork, link]) => (
     <Link key={socialNetwork} href={link}> 
-     {socialNetwork === 'instagram' ? <InstagramIcon /> : <FacebookIcon />}
+      {socialNetwork === 'instagram' ? <InstagramIcon /> : <FacebookIcon />}
     </Link>
-  ))
+  ));
 
- }
+};

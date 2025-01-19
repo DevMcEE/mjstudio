@@ -3,19 +3,20 @@ import { TopBar } from './components/TopBar';
 import { MenuItem, Route, SocialLinks } from './api/route.types';
 
 export default async function NotFound() {
-    let menu: MenuItem[] = [];
-    let socialLinks: SocialLinks = {};
+  let menu: MenuItem[] = [];
+  let socialLinks: SocialLinks = {};
+
+  try {
+    const response = await fetch(`${process.env.API_URL}/${Route.homePageMenu}`, {
+      cache: 'no-cache',
+    }).then((res) => res.json());
+
+    menu = response.menu;
+    socialLinks = response.socialLinks;
+  } catch (error) {
+    console.error('Failed to fetch metadata:', error);
+  }
   
-    try {
-      const response = await fetch(`${process.env.API_URL}/${Route.homePageMenu}`, {
-        cache: 'no-cache',
-      }).then((res) => res.json());
-      
-      menu = response.menu; 
-      socialLinks = response.socialLinks;
-    } catch (error) {
-      console.error('Failed to fetch metadata:', error);
-    }
   return (
     <main className="main-container">
       <TopBar menu={menu} socialLinks={socialLinks} />
@@ -25,5 +26,5 @@ export default async function NotFound() {
       </div>
       <Footer />
     </main>
-  )
+  );
 }

@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           if (lang === locale) return acc;
           
           acc[lang] = `${baseUrl}/${lang}`;
+          
           return acc;
         }, {} as Record<Locale, string>),
       },

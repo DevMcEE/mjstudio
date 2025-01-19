@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server';
 
 export default function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
   request.headers.set('x-nonce', nonce);
 
   const handleI18nRouting = createMiddleware(routing);

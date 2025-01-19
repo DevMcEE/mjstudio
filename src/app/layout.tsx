@@ -28,7 +28,7 @@ export const viewport: Viewport = {
   themeColor: '#000000',
   // Also supported by less commonly used
   // interactiveWidget: 'resizes-visual',
-}
+};
 
 export default async function RootLayout({
   children,

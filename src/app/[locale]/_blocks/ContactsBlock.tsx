@@ -13,6 +13,7 @@ export const ContactsBlock = ({ contacts, contactsId = 'contacts' }: ContactsBlo
   const { companyName, companyRegNum, companyAddress, workingHours, bookingNote, callToContact, email, phone, socialLinks, visiblePhone } = contacts || {};
   const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
   const t = useTranslations();
+
   return contacts ? (
     <div className={styles.blockContainerFullWidth} id={contactsId}>
       <div className={styles.blockTitleContainer}>
@@ -21,14 +22,14 @@ export const ContactsBlock = ({ contacts, contactsId = 'contacts' }: ContactsBlo
 
       {googleMapsApiKey && (
         <div className={`${styles.mapContainer} map-container` }>
-        <GoogleMapsEmbed
-          apiKey={googleMapsApiKey}
-          height={400}
-          width={600}
-          mode="place"
-          zoom="16"
-          q={companyAddress}
-        />
+          <GoogleMapsEmbed
+            apiKey={googleMapsApiKey}
+            height={400}
+            width={600}
+            mode="place"
+            zoom="16"
+            q={companyAddress}
+          />
         </div>
       )}
 
@@ -52,9 +53,7 @@ export const ContactsBlock = ({ contacts, contactsId = 'contacts' }: ContactsBlo
         <h3 className={styles.boldText}>{companyName}</h3>
         <p>{companyRegNum}</p>
         <p>{companyAddress}</p>
-
-
       </div>
     </div>
   ) : null;
-}
+};
