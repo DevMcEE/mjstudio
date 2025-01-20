@@ -5,18 +5,20 @@
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .submitButton.colorless{
     width: 100%;
     background-color: white;
     color: black;
-    padding: 10px 20px;
     border: 2px solid black;
-    border-radius: 8px;
-    cursor: pointer;
+}
+
+.submitButton.secondary{
+    width: 100%;
+    background-color: #47474750;
 }
 
 .submitButtonContent {

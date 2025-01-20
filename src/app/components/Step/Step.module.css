@@ -3,6 +3,7 @@
     flex-direction: column;
     transition: flex 0.3s ease-in-out;
     overflow: hidden;
+    scrollbar-width: none;
 }
 
 .stepSection.inactive {
@@ -10,8 +11,9 @@
 }
 
 .stepSection.active {
-    height: calc(100vh / 15);
-    flex-grow: 0.8;
+
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .stepItemDetails {

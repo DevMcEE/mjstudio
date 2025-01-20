@@ -15,6 +15,7 @@
     "contacts":"Contacts",
     "finish":"Finish",
     "submit":"Confirm",
-    "next":"Next"
+    "next":"Next",
+    "back":"Back"
   }
 }
