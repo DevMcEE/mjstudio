@@ -1,22 +1,20 @@
-export interface workingHours {
+export interface WorkingHoursRange {
     start: string,
     end: string
 }
 
-export type days = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday"
+export type WeekDay = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday"
 
-export type workingTimes = {
-    [key in days]: workingHours
+export type WorkingTimes = Record<WeekDay, WorkingHoursRange>
+
+export type Times = "morning" | "afternoon" | "evening"
+
+export type WorkingTimeGroups = {
+    [key in Times]: WorkingHoursRange
 }
 
-export type times = "morning" | "afternoon" | "evening"
-
-export type workingTimeGroups = {
-    [key in times]: workingHours
-}
-
-export interface exportTimeData {
-    workingTime: workingTimes,
+export interface ExportTimeData {
+    workingTime: WorkingTimes,
     timeSlotDurationMin: number,
-    timeGroups: workingTimeGroups,
+    timeGroups: WorkingTimeGroups,
 }

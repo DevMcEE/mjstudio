@@ -14,7 +14,7 @@ export const DayCell = ({ onClick, cellId, isSelected, date, isCurrentDay, isUna
     return (
         <div onClick={!isUnavailable ? onClick : ()=>{}} className={`${styles.cell}${isUnavailable ? ` ${styles.unavailable}` : ( isSelected ? ` ${styles.selected}` : '' )}${isCurrentDay ? ` ${styles.currentDay}` : ''}`}>
             <div className={styles.dayNumber}>{date.day}</div>
-            <div className={styles.slicedNameOfDay}>{date.toFormat('cccc').slice(0,2)}</div>
+            <div className={styles.slicedNameOfDay}>{date.weekdayShort}</div>
         </div>
     )
 }

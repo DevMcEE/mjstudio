@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./DatePicker.module.css";
 import { DateTime } from "luxon";
 import { DayCell } from "../DayCell";
@@ -14,17 +14,12 @@ export const DatePicker = () => {
     const format = 'yyyy-MM-dd';
     const [cellsMap, setCellsMap] = useState<cell[]>(dayCellsMapsClient.getRowForView());
 
-    const selectAnotherDay = (id: number)=>{
-        setSelectedCellId(id);
-    };
     useEffect(()=>{
-        EventEmitterClient.emit("OnDaySelect", {id: selectedCellId, date: dayCellsMapsClient.cellsMap[selectedCellId].date})
+        EventEmitterClient.emit("OnDaySelect", {id: selectedCellId, date: dayCellsMapsClient.cellsMap[selectedCellId].date});
     }, [selectedCellId])
     useEffect(() => {
         EventEmitterClient.on("DatePickerRowUpdated", () => {
-            console.log("updated");
             setCellsMap(dayCellsMapsClient.getRowForView());
-            
         })
         return () => {
             EventEmitterClient.unsubscribe("DatePickerRowUpdated");
@@ -36,15 +31,15 @@ export const DatePicker = () => {
 
     return (
         <div className={styles.dataPickerContainer}>
-            <div onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</div>
+            <button onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</button>
                 <div className={styles.cellsContainer}>
                     {cellsMap.map((item, index) => {
                         return (
-                            <DayCell key={index} onClick={()=>selectAnotherDay(item.id)} isCurrentDay={item.date.toFormat(format) === currentDate.toFormat(format)} cellId={item.id} isSelected={item.id === selectedCellId} date={item.date} isUnavailable={item.date !<= currentDate && (item.date.toFormat(format)===currentDate.toFormat(format) ? false : true)}/>
+                            <DayCell key={index} onClick={()=>setSelectedCellId(item.id)} isCurrentDay={item.date.toFormat(format) === currentDate.toFormat(format)} cellId={item.id} isSelected={item.id === selectedCellId} date={item.date} isUnavailable={item.date !<= currentDate && (item.date.toFormat(format)===currentDate.toFormat(format) ? false : true)}/>
                         )
                     })}
                 </div>
-            <div onClick={() => dayCellsMapsClient.scrollTo("right")} className={`${styles.arrowButton} ${styles.rightArrowButton}`}>&rsaquo;</div>
+            <button onClick={() => dayCellsMapsClient.scrollTo("right")} className={`${styles.arrowButton} ${styles.rightArrowButton}`}>&rsaquo;</button>
         </div>
     )
 }

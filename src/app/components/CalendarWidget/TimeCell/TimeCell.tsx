@@ -1,17 +1,16 @@
 import styles from "./TimeCell.module.css"
-import { DateTime } from "luxon"
 
 export interface TimeCellProps {
-    time:DateTime
+    time:`${string}:${string}`
     selected: boolean,
-    onClick: () => void
+    onClick: () => void,
+    available: boolean
 }
 
-export const TimeCell = ({time, selected, onClick}: TimeCellProps) => {
-    const stringTime: string = time.toFormat("HH:mm");
+export const TimeCell = ({time, selected, onClick, available}: TimeCellProps) => {
     return (
-        <div className={`${styles.timeCell} ${selected ? styles.selected : ""}`} onClick={onClick}>
-            <p>{stringTime}</p>
-        </div>
+        <button className={`${styles.timeCell} ${selected ? styles.selected : ""} ${!available ? styles.unavailable : ""}`} onClick={onClick}>
+            <p>{time}</p>
+        </button>
     )
 }

@@ -1,19 +1,9 @@
 import styles from "./page.module.css";
 import { DatePicker } from "@/app/components/CalendarWidget/DatePicker";
-import { exportTimeData } from "@/app/api/booking-page/route.types";
-import { Route } from "@/app/api/route.types";
 import { TimeCellsContainer } from "@/app/components/CalendarWidget/TimeCellsContainer";
-import EventEmitterClient from "@/app/services/EventEmitterClient";
 
 export default async function BookingPage({ params }: { params: Promise<{ locale: string }> }) {
-    let timeData = {} as exportTimeData;
-    try{
-        timeData = await fetch(`${process.env.API_URL}/${Route.bookingPageWorkingTime}`).then((res)=>res.json());
-    }
-    catch(error){
-        console.error(error);
-    }
-
+    console.log(process.env.API_URL, "looooool")
     return (
         <div className={styles.mainContainer}>
             <h1 className={styles.headingText}>Booking</h1>
@@ -25,7 +15,7 @@ export default async function BookingPage({ params }: { params: Promise<{ locale
             <div className={styles.calendarContainer}>
                 <p>Select Date & Time:</p>
                 <DatePicker/>
-                <TimeCellsContainer timeData={timeData}/>
+                <TimeCellsContainer API_URL={process.env.API_URL ? process.env.API_URL : ""}/>
             </div>
         </div>
     )

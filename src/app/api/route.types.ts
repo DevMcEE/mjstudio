@@ -17,6 +17,7 @@ export const Route = {
   homePageFooter: 'api/home-page/footer',
   homePageMenu: 'api/home-page/menu',
   bookingPageWorkingTime: 'api/booking-page/working-time',
+  bookingPageTimeSlots: 'api/booking-page/time-slots'
 } as const;
 
 export type MenuItem = {

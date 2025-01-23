@@ -1,10 +1,10 @@
 import { NextResponse, NextRequest} from "next/server";
-import { timeData } from "./data";
+import { TIME_DATA } from "./data";
 
 export async function GET(request: NextRequest){
     try {
         return NextResponse.json(
-          timeData,
+          TIME_DATA,
           { status: 200 }
         );
     } catch (error) {
