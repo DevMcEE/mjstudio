@@ -11,10 +11,12 @@ interface TopBarProps {
 export const TopBar = async ({ menu, socialLinks }: TopBarProps) => {
 
   const currentLocale = await getLocale();
+
   return (
     <header className={styles.topBarContainer}>
       {/* <Logo /> */}
-      <MobileMenu menu={menu} currentLocale={currentLocale} socialLinks={socialLinks} />
+      <span></span>
+      <MobileMenu menu={menu} currentLocale={currentLocale}  socialLinks={socialLinks}/>
     </header>
   );
-}
+};

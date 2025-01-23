@@ -2,7 +2,6 @@ import { Locale, locales } from '@/i18n/config.types';
 import { NextRequest, NextResponse } from 'next/server';
 import { data } from './data';
 
-
 export async function GET(request: NextRequest) {
   let locale = (request.headers.get('accept-language') as Locale) || Locale.en;  
 
@@ -12,7 +11,7 @@ export async function GET(request: NextRequest) {
 
   try {
     return NextResponse.json(
-      data[locale],
+      data[locale] || data[Locale.en],
       { status: 200 }
     );
   } catch (error) {

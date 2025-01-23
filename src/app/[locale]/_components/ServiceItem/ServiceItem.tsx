@@ -19,4 +19,4 @@ export const ServiceItem = ({ name = '', description = '', prices = [], currency
       </div>
     </div>
   );
-}
+};

@@ -11,6 +11,7 @@ interface ServicesBlockProps {
 };
 export const ServicesBlock = ({ services = [], extraServices= [], currency = '', serviceBlockId='services'}: ServicesBlockProps) => {
   const t = useTranslations();
+
   return (
     <div className={styles.serviceBlockContainer} id={serviceBlockId}>
       <div className={styles.serviceBlockContent}>

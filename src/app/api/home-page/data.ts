@@ -54,7 +54,7 @@ export const menu: Menu = {
 export const SocialLinks = {
   facebook: 'https://www.facebook.com/profile.php?id=61568231552804',
   instagram: 'https://www.instagram.com/mjstudio.ee/'
-}
+};
 
 const Price = {
   faceMassage: {
@@ -87,7 +87,7 @@ const Price = {
     min90: '85',
     min120: '105',
   },
-}
+};
 
 export const businessData: BusinessData = {
   companyName: "ATMW Invest OÜ",
@@ -101,7 +101,7 @@ export const businessData: BusinessData = {
   city: 'Tallinn',
   latitude: "56.608606",
   longitude: "12.5899642"
-}
+};
 
 export const content: Content = {
   [Locale.en]: {
@@ -645,4 +645,4 @@ export const data: PageLocaleData = {
     body:  content[Locale.th],
     footer: {},
   },
-}
+};

@@ -1,4 +1,5 @@
 'use client';
+
 import styles from './MenuModal.module.css';
 import { MenuItem, SocialLinks } from "../../api/route.types";
 import { Link } from '@/i18n/routing';
@@ -45,5 +46,5 @@ export const MenuModal = ({ menu, onClose, currentLocale, socialLinks }: MenuMod
       )}
 
     </div>
-  )
-}
+  );
+};

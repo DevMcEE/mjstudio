@@ -1,4 +1,5 @@
 'use client';
+
 import { MenuItem, SocialLinks } from "@/app/api/route.types";
 import { useState } from "react";
 import { MenuModal } from "../MenuModal";
@@ -29,4 +30,4 @@ export const MobileMenu = ({ menu, currentLocale, socialLinks }: MobileMenuProps
       }
     </div>
   );
-}
+};
