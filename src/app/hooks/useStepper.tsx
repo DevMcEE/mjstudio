@@ -1,24 +1,26 @@
 'use client';
 import { useState } from 'react';
-import { step, StepType, UseStepperProps } from './useStepper.types';
+import { UseStepper } from './useStepper.types';
 
+export interface useStepperProps {
+    steps: Record<string, ()=> JSX.Element>
+}
 
-export const useStepper = (): UseStepperProps => {
-    const steps = Object.keys(step) as StepType[];
+export const useStepper = ({ steps }: useStepperProps): UseStepper => {
     const [activeStep, setActiveStep] = useState<number>(0);
-    const [stepIsCompleted, setStepIsCompleted] = useState<boolean[]>([]);
-    const [stepIsSubmitted, setStepIsSubmitted] = useState<boolean[]>([]);
+    const [completedSteps, setCompletedSteps] = useState<boolean[]>([]);
+    const [submittedSteps, setSubmittedSteps] = useState<boolean[]>([]);
 
     const handleBack = (): void => setActiveStep((prev) => prev - 1);
 
     const handleReset = (): void  => {
         setActiveStep(0);
-        setStepIsCompleted([]);
-        setStepIsSubmitted([]);
+        setCompletedSteps([]);
+        setSubmittedSteps([]);
     };
 
     const handleComplete = (): void  => {
-        setStepIsCompleted((prev) => {
+        setCompletedSteps((prev) => {
             const newState = [...prev];
             newState[activeStep] = true;
             return newState;
@@ -27,7 +29,7 @@ export const useStepper = (): UseStepperProps => {
     };
 
     const handleSubmit = (): void  => {
-        setStepIsSubmitted((prev) => {
+        setSubmittedSteps((prev) => {
             const newState = [...prev];
             newState[activeStep] = true;
             return newState;
@@ -35,29 +37,22 @@ export const useStepper = (): UseStepperProps => {
 
     }
 
-    const isLastStep = activeStep === steps.length - 1;
-    const areAllStepsCompleted = stepIsCompleted.length === steps.length;
+    const isLastStep = activeStep === Object.keys(steps).length - 1;
+    const areAllStepsCompleted = completedSteps.length === Object.keys(steps).length;
     
     const handleNext = (): void => {
-        if (isLastStep && !areAllStepsCompleted) {
-            setActiveStep(prev => prev + 1);
-        } else if (!isLastStep) {
-            setActiveStep(prev => Math.min(prev + 1, steps.length - 1));
-        }
+        if (!areAllStepsCompleted) setActiveStep(prev => prev + 1);
     };
-    
 
     return {
         activeStep,
         isLastStep,
-        stepIsSubmitted,
-        steps, 
-        stepIsCompleted,
+        stepIsSubmitted: submittedSteps,
+        stepIsCompleted: completedSteps,
         handleSubmit,
         handleComplete,
         handleNext,
         handleBack,
         handleReset
     }
-
 }

@@ -1,14 +1,13 @@
 import { SubmitButton } from '../SubmitButton';
 import styles from './ActionBar.module.css';
-import { StepType } from '@/app/hooks/useStepper.types';
-import { SelectedServicesProps, Translations } from '../Stepper/Stepper.types';
+import { SelectedServices, Translations } from '../Stepper/Stepper.types';
 
 export interface ActionBarProps {
     translations: Translations;
     stepIsCompleted: boolean[];
-    steps: StepType[];
+    steps: string[];
     activeStep: number;
-    selectedService: SelectedServicesProps;
+    selectedService: SelectedServices;
     handleComplete: () => void;
     handleNext: () => void;
     handleBack: () => void;
@@ -32,16 +31,10 @@ export const ActionBar = ({ steps, activeStep, selectedService, handleComplete, 
                         </div>
                     }
                 </div>
-                {!stepIsCompleted[activeStep]
-                    ? (<SubmitButton title={submit} onClick={handleComplete} />)
-                    : (<SubmitButton title={next} onClick={handleNext} />)
-                }
+                <SubmitButton title={!stepIsCompleted[activeStep] ? submit : next} onClick={!stepIsCompleted[activeStep] ? handleComplete : handleNext} />
                 {activeStep !== 0 && <SubmitButton secondary={true} title={back} onClick={handleBack} />}
-              
+
             </div>
         </div>
     );
 };
-
-
-

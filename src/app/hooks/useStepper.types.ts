@@ -1,15 +1,6 @@
-export const step = {
-    service: 'service',
-    date_time: 'date_time',
-    contacts: 'contacts',
-    finish: 'finish',
-} as const;
-
-export type StepType = typeof step[keyof typeof step];
 export type Completed = Record<number, boolean>
 
-
-export interface UseStepperProps {
+export interface UseStepper {
     activeStep: number;
     stepIsCompleted: boolean[];
     stepIsSubmitted: boolean[];
@@ -19,5 +10,4 @@ export interface UseStepperProps {
     handleReset: () => void;
     handleComplete: () => void;
     isLastStep: boolean;
-    steps: StepType[];
 }

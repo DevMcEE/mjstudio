@@ -1,9 +1,8 @@
 import { Content } from "@/app/api/route.types";
-import { StepType } from "@/app/hooks/useStepper.types";
 import { Locale } from "@/i18n/config.types";
 
 export interface Translations {
-    stepsTranslationsMap: Record<StepType, string>;    
+    stepsTranslationsMap: Record<string, string>;    
     next: string;
     submit: string;
     back: string;
@@ -14,14 +13,13 @@ export interface StepperProps {
     locale: Locale;
 }
 
-
 export interface GetServiceProps {
     content: Content;
     locale: Locale;
     range: number
 }
 
-export interface SelectedServicesProps {
+export interface SelectedServices {
     name: string;
     unit: string;
     price: string;
