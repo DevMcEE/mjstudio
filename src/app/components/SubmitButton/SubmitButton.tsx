@@ -9,9 +9,9 @@ export interface SubmitButtonProps {
 
 export const SubmitButton = ({ title, onClick, secondary = false, colorless = false }: SubmitButtonProps) => {
 
-    return (
-        <button className={`${styles.submitButton} ${colorless ? styles.colorless : ""} ${secondary ? styles.secondary : ""}`} onClick={onClick}>
-            <span className={styles.submitButtonContent}>{title}</span>
-        </button>
-    )
-}
+  return (
+    <button className={`${styles.submitButton} ${colorless ? styles.colorless : ""} ${secondary ? styles.secondary : ""}`} onClick={onClick}>
+      <span className={styles.submitButtonContent}>{title}</span>
+    </button>
+  );
+};

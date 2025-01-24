@@ -4,7 +4,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Locale } from "@/i18n/config.types";
 import { Translations } from "@/app/components/Stepper/Stepper.types";
 
-
 export default function HomePage() {
   const t = useTranslations("booking");
   const locale = useLocale() as Locale;
@@ -20,7 +19,6 @@ export default function HomePage() {
     next: t('next'),
     back: t('back'),
   };
-
 
   return (
     <div className={styles.main}>
