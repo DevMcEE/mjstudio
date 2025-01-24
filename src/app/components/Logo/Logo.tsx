@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 
 export const Logo = () => {
@@ -11,4 +12,4 @@ export const Logo = () => {
       height={50}
     />
   );
-}
+};

@@ -4,5 +4,5 @@ export const CloseIcon = () => {
       <line x1="2.50413" y1="23.3416" x2="22.6364" y2="1.09999" stroke="black" strokeWidth="3"/>
       <line x1="23.1525" y1="23.2739" x2="1.93933" y2="2.06065" stroke="black" strokeWidth="3"/>
     </svg>
-  )
-}
+  );
+};

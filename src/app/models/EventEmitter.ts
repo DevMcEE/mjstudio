@@ -6,7 +6,7 @@ export class EventEmitter {
       this.listeners[eventName].add(callBack);
     } else {
       this.listeners[eventName] = new Set();
-      this.listeners[eventName].add(callBack)
+      this.listeners[eventName].add(callBack);
     }
   }
 
@@ -14,13 +14,13 @@ export class EventEmitter {
     if (eventName in this.listeners) {
       this.listeners[eventName].forEach((callBack) => {
         callBack(args);
-      })
+      });
     }
   }
 
   unsubscribe(eventName: string) {
     if (eventName in this.listeners) {
-        console.log(`${eventName} unsubscribed`)
+      console.log(`${eventName} unsubscribed`);
       delete this.listeners[eventName];
     }
   }

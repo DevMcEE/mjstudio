@@ -7,11 +7,9 @@ export type WeekDay = "monday" | "tuesday" | "wednesday" | "thursday" | "friday"
 
 export type WorkingTimes = Record<WeekDay, WorkingHoursRange>
 
-export type Times = "morning" | "afternoon" | "evening"
+export type Time = "morning" | "afternoon" | "evening"
 
-export type WorkingTimeGroups = {
-    [key in Times]: WorkingHoursRange
-}
+export type WorkingTimeGroups = Record<Time, WorkingHoursRange>
 
 export interface ExportTimeData {
     workingTime: WorkingTimes,

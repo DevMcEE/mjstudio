@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
  
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.BASE_URL || '/';
@@ -16,5 +16,5 @@ export default function robots(): MetadataRoute.Robots {
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
-  }
+  };
 }

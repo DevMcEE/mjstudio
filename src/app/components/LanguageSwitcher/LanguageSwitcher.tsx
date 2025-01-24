@@ -34,7 +34,7 @@ export const LanguageSwitcher = ({ currentLocale }: LanguageSwitcherProps) => {
         { locale }
       );
     });
-  }
+  };
 
   return (
     <div className={`${styles.languageSwitcher} ${isPending ? styles.pending : ''}`}>
