@@ -38,7 +38,7 @@ export const useStepper = ({ steps, selectedService, setSelectedService }: useSt
   const handleComplete = (): void => {
     setBookingDetails((prev) => ({
       ...prev,
-      [currentStep]: selectedService || prev[currentStep], // Защититься от перезаписи
+      [currentStep]: selectedService || prev[currentStep], 
     }));
     setCompletedSteps((prev) => {
       const newState = [...prev];
