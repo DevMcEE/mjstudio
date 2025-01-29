@@ -9,16 +9,16 @@
     cursor: pointer;
 }
 
-.submitButton.colorless{
-    width: 100%;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
+.submitButton:hover {
+    background-color: #333;
+    animation: ripple 0.3s ease-in-out;
 }
 
 .submitButton.secondary{
     width: 100%;
-    background-color: #47474750;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
 }
 
 .submitButtonContent {

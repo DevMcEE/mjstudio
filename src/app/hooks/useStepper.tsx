@@ -1,56 +1,77 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UseStepper } from './useStepper.types';
+import { SelectedServices } from '../components/Stepper/Stepper.types';
 
 export interface useStepperProps {
-    steps: Record<string, ()=> JSX.Element>
+  steps: Record<string, () => JSX.Element>
+  selectedService: SelectedServices;
+  setSelectedService: React.Dispatch<React.SetStateAction<SelectedServices>>
 }
 
-export const useStepper = ({ steps }: useStepperProps): UseStepper => {
-  const [activeStep, setActiveStep] = useState<number>(0);
+export const useStepper = ({ steps, selectedService, setSelectedService }: useStepperProps): UseStepper => {
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const [completedSteps, setCompletedSteps] = useState<boolean[]>([]);
   const [submittedSteps, setSubmittedSteps] = useState<boolean[]>([]);
+  const [bookingDetails, setBookingDetails] = useState<Record<string, SelectedServices>>({});
+  const stepsNames = Object.keys(steps);
 
-  const handleBack = (): void => setActiveStep((prev) => prev - 1);
+  const handleBack = (): void => setCurrentStep((prev) => prev - 1);
 
-  const handleReset = (): void  => {
-    setActiveStep(0);
+  useEffect(() => {
+    if (!selectedService) return;
+
+    setBookingDetails((prev) => ({
+      ...prev, [currentStep]: selectedService
+    }));
+
+  }, [selectedService]);
+
+  const handleReset = (): void => {
+    setCurrentStep(0);
     setCompletedSteps([]);
     setSubmittedSteps([]);
+    setBookingDetails({});
   };
 
-  const handleComplete = (): void  => {
+  const handleComplete = (): void => {
+    setBookingDetails((prev) => ({
+      ...prev,
+      [currentStep]: selectedService || prev[currentStep], // Защититься от перезаписи
+    }));
     setCompletedSteps((prev) => {
       const newState = [...prev];
 
-      newState[activeStep] = true;
+      newState[currentStep] = true;
 
       return newState;
     });
+    setSelectedService({});
     handleNext();
   };
 
-  const handleSubmit = (): void  => {
+  const handleSubmit = (): void => {
     setSubmittedSteps((prev) => {
       const newState = [...prev];
 
-      newState[activeStep] = true;
+      newState[currentStep] = true;
 
       return newState;
     });
 
   };
 
-  const isLastStep = activeStep === Object.keys(steps).length - 1;
-  const areAllStepsCompleted = completedSteps.length === Object.keys(steps).length;
-    
+  const isLastStep = currentStep === stepsNames.length - 1;
+  const areAllStepsCompleted = completedSteps.length === stepsNames.length;
+
   const handleNext = (): void => {
-    if (!areAllStepsCompleted) setActiveStep(prev => prev + 1);
+    if (!areAllStepsCompleted) setCurrentStep(prev => prev + 1);
   };
 
   return {
-    activeStep,
+    stepsNames,
+    currentStep,
     isLastStep,
     stepIsSubmitted: submittedSteps,
     stepIsCompleted: completedSteps,
@@ -58,6 +79,7 @@ export const useStepper = ({ steps }: useStepperProps): UseStepper => {
     handleComplete,
     handleNext,
     handleBack,
-    handleReset
+    handleReset,
+    bookingDetails
   };
 };

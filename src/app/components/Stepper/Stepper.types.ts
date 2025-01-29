@@ -1,4 +1,4 @@
-import { Content } from "@/app/api/route.types";
+import { PageLocaleData } from "@/app/api/route.types";
 import { Locale } from "@/i18n/config.types";
 
 export interface Translations {
@@ -14,13 +14,15 @@ export interface StepperProps {
 }
 
 export interface GetServiceProps {
-    content: Content;
+    data: PageLocaleData;
     locale: Locale;
     range: number
 }
 
 export interface SelectedServices {
-    name: string;
-    unit: string;
-    price: string;
+    name?: string;
+    unit?: string;
+    price?: string;
+    date?: string;
+    time?: string;
 }

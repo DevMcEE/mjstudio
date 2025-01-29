@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { data } from './data';
 
 export async function GET(request: NextRequest) {
-  let locale = (request.headers.get('accept-language') as Locale) || Locale.en;  
+  let locale = (request.headers.get('accept-language') as Locale) || Locale.en;
+  
+  console.log(locale);
 
   if (!locales.includes(locale)) {
     locale = Locale.en;

@@ -3,38 +3,35 @@
 import styles from './Stepper.module.css';
 import { useStepper } from '../../hooks/useStepper';
 import { Step } from '../Step/Step';
-import { content } from '@/app/api/home-page/data';
 import { useState } from 'react';
 import { SelectedServices, StepperProps } from './Stepper.types';
 import { ActionBar } from '../ActionBar';
-import { form, mockForm } from './StepperMockData';
+import { Form, MockForm } from './StepperMockData';
 
 export const Stepper = ({ translations, locale }: StepperProps) => {
-  const { stepsTranslationsMap} = translations;
-  const selectedServicesDefaultValue: SelectedServices = { name: "", unit: "", price: "" };
-  const [selectedService, setSelectedService] = useState<SelectedServices>(selectedServicesDefaultValue);
+  const { stepsTranslationsMap } = translations;
+  const [selectedService, setSelectedService] = useState<SelectedServices>({});
 
   const handleResetForm = () => {
     handleReset();
-    setSelectedService(selectedServicesDefaultValue);
+    setSelectedService({});
   };
 
   const forms: Record<string, () => JSX.Element> = {
     service: () =>
-      mockForm({
+      MockForm({
         handleSubmit,
         locale,
-        content,
         selectedService,
         setSelectedService,
       }),
-    date_time: () => form({ handleSubmit, handleResetForm }),
-    contacts: () => form({ handleSubmit, handleResetForm }),
-    finish: () => form({ handleSubmit, handleResetForm }),
+    date_time: () => Form({ handleSubmit, handleResetForm }),
+    contacts: () => Form({ handleSubmit, handleResetForm }),
+    finish: () => Form({ handleSubmit, handleResetForm }),
   };
 
   const {
-    activeStep,
+    currentStep,
     stepIsCompleted,
     stepIsSubmitted,
     handleComplete,
@@ -43,26 +40,29 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
     handleReset,
     handleBack,
     isLastStep,
-  } = useStepper({ steps: forms });
+    stepsNames,
+    bookingDetails,
+  } = useStepper({ steps: forms, selectedService, setSelectedService });
 
   return (
     <div className={styles.stepperMainContainer}>
-      {Object.keys(forms).map((step, index) => (
+      {stepsNames.map((step, index) => (
         <Step
           key={step}
           index={index}
-          steps={Object.keys(forms)}
-          activeStep={activeStep}
+          steps={stepsNames}
+          currentStep={currentStep}
           form={forms[step]}
-          stepsMap={stepsTranslationsMap}
+          stepsTranslationsMap={stepsTranslationsMap}
           isLastStep={isLastStep}
           stepIsCompleted={stepIsCompleted}
+          serviceDescription={bookingDetails[index]}
         />
       ))}
-      {stepIsSubmitted[activeStep] && (
+      {stepIsSubmitted[currentStep] && (
         <ActionBar
-          steps={Object.keys(forms)}
-          activeStep={activeStep}
+          steps={stepsNames}
+          currentStepIndex={currentStep}
           selectedService={selectedService}
           handleComplete={handleComplete}
           handleNext={handleNext}

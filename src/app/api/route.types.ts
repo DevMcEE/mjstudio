@@ -34,7 +34,6 @@ export type Price = {
 }
 
 export type Service = {
-  title: string;
   name: string;
   description: string;
   prices: Price[];
