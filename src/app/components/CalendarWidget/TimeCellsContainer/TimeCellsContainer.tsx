@@ -9,8 +9,10 @@ import { TIME_GROUPS } from "@/app/api/booking-page/working-time/data";
 import EventEmitterClient from "@/app/services/EventEmitterClient";
 import { Route } from "@/app/api/route.types";
 
+export type TimeRange = `${string}:${string}`;
+
 export type TimesGroups = {
-  [key in Time]: `${string}:${string}`[]
+  [key in Time]: TimeRange[]
 }
 
 export interface TimeCellContainerProps {
@@ -23,6 +25,7 @@ export const TimeCellsContainer = ({ API_URL }: TimeCellContainerProps) => {
   const [currentDay, setCurrentDay] = useState<DateTime>(DateTime.now());
   const [currentTime, setCurrentTime] = useState<string>();
   const [timeSlots, setTimeSlots] = useState<TimesGroups>();
+  const timeRangeFormat = "HH:mm";
 
   useEffect(() => {
     EventEmitterClient.on("OnDaySelect", (data) => {
@@ -61,6 +64,26 @@ export const TimeCellsContainer = ({ API_URL }: TimeCellContainerProps) => {
     timeSlots();
   }, [currentDay, API_URL]);
 
+  const isAvailable = (dateTime: DateTime) => {
+    return dateTime > DateTime.now() || currentDay > DateTime.now();
+  };
+
+  const getClickFunc = (timeRange: TimeRange) => {
+    if(isAvailable(getDateTimeBySlot(timeRange))){
+      return () => setCurrentTime(timeRange);
+    }
+
+    return () => {};
+  };
+
+  const getDateTimeBySlot = (timeRange: TimeRange) => {
+    const dateTimeBySlot = DateTime.fromFormat(timeRange, timeRangeFormat);
+
+    dateTimeBySlot.set({day: currentDay.day, month: currentDay.month, year: currentDay.year});
+
+    return dateTimeBySlot;
+  };
+
   return (
     <div className={styles.timeGroupsContainer}>
       {Object.keys(TIME_GROUPS).map(
@@ -70,10 +93,15 @@ export const TimeCellsContainer = ({ API_URL }: TimeCellContainerProps) => {
               <p key={`${key}-header`} className={`${styles.timeCellHeading}`}>{key}</p>
               <div key={key} className={styles.timeCellsContainer}>
                 {(timeSlots
-                  ? (timeSlots[key as Time].length !== 0
-                    ? timeSlots[key as Time].map((element) => (<TimeCell key={element} onClick={DateTime.fromFormat(element, "HH:mm") > DateTime.fromFormat(DateTime.now().toFormat("HH:mm"), "HH:mm")
-                      ? () => setCurrentTime(element)
-                      : () => { }} time={element} selected={currentTime === element} available={DateTime.fromFormat(element, "HH:mm") > DateTime.fromFormat(DateTime.now().toFormat("HH:mm"), "HH:mm")} />))
+                  ? (timeSlots[key as Time].length
+                    ? timeSlots[key as Time].map((element) => (
+                      <TimeCell key={element}
+                        onClick={getClickFunc(element)}
+                        time={element}
+                        selected={currentTime === element}
+                        available={isAvailable(getDateTimeBySlot(element))}
+                      />
+                    ))
                     : "No time available")
                   : (<></>))}
               </div>

@@ -1,9 +1,20 @@
+import { TimeRange } from "@/app/components/CalendarWidget/TimeCellsContainer/TimeCellsContainer";
+
 export interface WorkingHoursRange {
-    start: string,
-    end: string
+    start: TimeRange,
+    end: TimeRange
 }
 
-export type WeekDay = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday"
+export const WeekDay = {
+  monday: 'monday',
+  tuesday: 'tuesday',
+  wednesday: 'wednesday',
+  thursday: 'thursday',
+  friday: 'friday',
+  saturday: 'saturday',
+  sunday: 'sunday'
+} as const;
+export type WeekDay = typeof WeekDay[keyof typeof WeekDay];
 
 export type WorkingTimes = Record<WeekDay, WorkingHoursRange>
 

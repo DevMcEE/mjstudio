@@ -17,6 +17,7 @@ export const DatePicker = () => {
   useEffect(()=>{
     EventEmitterClient.emit("OnDaySelect", {id: selectedCellId, date: dayCellsMapsClient.cellsMap[selectedCellId].date});
   }, [selectedCellId]);
+
   useEffect(() => {
     EventEmitterClient.on("DatePickerRowUpdated", () => {
       setCellsList(dayCellsMapsClient.getRowForView());
@@ -26,17 +27,24 @@ export const DatePicker = () => {
       EventEmitterClient.unsubscribe("DatePickerRowUpdated");
     };
   },[]);
-  useEffect(()=>{
-    console.log(cellsList, "current row");
-  }, [cellsList]);
 
+  const isCurrentDay = (item: cell) => {
+    return item.date.toFormat(format) === currentDate.toFormat(format);
+  };
+  
   return (
     <div className={styles.dataPickerContainer}>
       <button onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</button>
       <div className={styles.cellsContainer}>
         {cellsList.map((item, index) => {
+            const isToday = item.date.startOf('day').equals(DateTime.now().startOf('day'));
           return (
-            <DayCell key={index} onClick={()=>setSelectedCellId(item.id)} isCurrentDay={item.date.toFormat(format) === currentDate.toFormat(format)} isSelected={item.id === selectedCellId} date={item.date} isUnavailable={item.date !<= currentDate && (item.date.toFormat(format)===currentDate.toFormat(format) ? false : true)}/>
+            <DayCell key={index}
+              onClick={()=>setSelectedCellId(item.id)}
+              isCurrentDay={isCurrentDay(item)}
+              isSelected={item.id === selectedCellId}
+              date={item.date}
+              isUnavailable={item.date < currentDate.startOf('day') && !isToday}/>
           );
         })}
       </div>

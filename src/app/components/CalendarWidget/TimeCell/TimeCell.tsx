@@ -1,7 +1,8 @@
+import { TimeRange } from "../TimeCellsContainer/TimeCellsContainer";
 import styles from "./TimeCell.module.css";
 
 export interface TimeCellProps {
-    time:`${string}:${string}`
+    time:TimeRange
     selected: boolean,
     onClick: () => void,
     available: boolean

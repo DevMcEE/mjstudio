@@ -14,7 +14,7 @@ export default async function BookingPage() {
       <div className={styles.calendarContainer}>
         <p>Select Date & Time:</p>
         <DatePicker/>
-        <TimeCellsContainer API_URL={process.env.API_URL ? process.env.API_URL : ""}/>
+        <TimeCellsContainer API_URL={process.env.API_URL || ""}/>
       </div>
     </div>
   );

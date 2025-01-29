@@ -1,9 +1,9 @@
 import { DateTime } from "luxon";
 import { TIME_DATA } from "../working-time/data";
 import { Time, WeekDay } from "../route.types";
-import { TimesGroups } from "@/app/components/CalendarWidget/TimeCellsContainer/TimeCellsContainer";
+import { TimeRange, TimesGroups } from "@/app/components/CalendarWidget/TimeCellsContainer/TimeCellsContainer";
 
-export const TIME_CELLS = (ISO: string)=>{
+export const getTimeCell = (ISO: string)=>{
   const currentDay = DateTime.fromISO(ISO);
   const shortDay: WeekDay = currentDay.toFormat("cccc").toLowerCase() as WeekDay;
   const returnTimeCells = {
@@ -31,7 +31,7 @@ export const TIME_CELLS = (ISO: string)=>{
     catch(error){
       console.error(error);
     }
-    returnTimeCells[currentTimeGroup].push(time.toFormat("HH:mm") as `${string}:${string}`);
+    returnTimeCells[currentTimeGroup].push(time.toFormat("HH:mm") as TimeRange);
     time = time.plus({minutes:TIME_DATA.timeSlotDurationMin});
   }
 
