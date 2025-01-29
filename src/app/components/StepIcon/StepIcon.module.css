@@ -1,0 +1,20 @@
+.circle {
+    fill: #cbc9c97a;
+    z-index: 1;
+}
+
+.active {
+    fill: #cbc9c97a;
+}
+
+.completed {
+    fill: #000000;
+}
+
+.text{
+    fill: rgb(0, 0, 0);
+    font-size: small;
+}
+.activeText{
+    fill:rgb(0, 0, 0);
+}

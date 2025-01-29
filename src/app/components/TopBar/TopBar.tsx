@@ -9,6 +9,7 @@ interface TopBarProps {
 }
 
 export const TopBar = async ({ menu, socialLinks }: TopBarProps) => {
+
   const currentLocale = await getLocale();
 
   return (

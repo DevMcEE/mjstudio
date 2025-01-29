@@ -1,0 +1,84 @@
+.submitPopUp {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    padding: 20px;
+    z-index: 2;
+    max-width: 600px;
+  }
+  
+  .submitButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .submitButton {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .submitButtonRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .submitButtonContent {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .submitOptions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    white-space: nowrap;
+    padding: 8px 16px;
+    margin-top: 6px;
+    align-items: center;
+    cursor: pointer;
+    font-style: normal;
+    line-height: 24px;
+    justify-content: space-between;
+  }
+  
+  .submitServiceDescription {
+    color: black;
+    font-size: medium;
+  }
+  
+  .submitServicePrice {
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .submitServiceDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .submitOrderDetails{
+    display: flex;
+    flex-direction: row;
+  
+  }
+  .submitServiceSubDescription{
+    color:grey;
+    font-size: smaller;
+    margin-left:10px;
+  
+  }
