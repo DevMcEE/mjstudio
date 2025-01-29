@@ -1,0 +1,40 @@
+.cell{
+    width: 46px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cell .dayNumber{
+    font-size: 34px;
+    font-weight: bold;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2px;
+    padding-top: 5px;
+}
+.cell .slicedNameOfDay{
+    font-size: 17px;
+    height: 40%;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selected{
+    background-color: #000 !important;
+    color:#fff !important;
+    border: 1px solid #000 !important;
+    border-radius: 8px;
+}
+.currentDay{
+    border-radius: 6px;
+    border: 1px solid #000;
+    
+}
+.unavailable{
+    color:#bababa !important;
+}
