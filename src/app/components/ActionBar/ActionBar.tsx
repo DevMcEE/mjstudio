@@ -1,20 +1,20 @@
 import { SubmitButton } from '../SubmitButton';
 import styles from './ActionBar.module.css';
 import { SelectedServices, Translations } from '../Stepper/Stepper.types';
+import { formatPriceCurrency } from '@/app/utils/formatPriceCurrency';
 
 export interface ActionBarProps {
   translations: Translations;
   stepIsCompleted: boolean[];
-  steps: string[];
   currentStepIndex: number;
   selectedService: SelectedServices;
   handleComplete: () => void;
   handleNext: () => void;
   handleBack: () => void;
-  stepLabel?: string;
+  showServiceInActionBar: boolean  
 }
 
-export const ActionBar = ({ steps, currentStepIndex, selectedService, handleComplete, handleNext, stepIsCompleted, handleBack, translations, stepLabel='service' }: ActionBarProps) => {
+export const ActionBar = ({ currentStepIndex, selectedService, handleComplete, handleNext, stepIsCompleted, handleBack, translations, showServiceInActionBar }: ActionBarProps) => {
 
   const { next, submit, back } = translations;
   
@@ -22,13 +22,13 @@ export const ActionBar = ({ steps, currentStepIndex, selectedService, handleComp
     <div className={styles.submitPopUp}>
       <div className={styles.submitButtonContainer}>
         <div className={styles.submitOptions}>
-          {steps[currentStepIndex] === stepLabel &&
+          {showServiceInActionBar &&
             <div className={styles.submitServiceDetails}>
               <div className={styles.submitOrderDetails}>
                 <div className={styles.submitServiceDescription}>{selectedService.name}</div>
                 <div className={styles.submitServiceSubDescription}>{selectedService.unit}</div>
               </div>
-              <div className={styles.submitServicePrice}>{`${selectedService.price} EUR`}</div>
+              <div className={styles.submitServicePrice}>{formatPriceCurrency(Number(selectedService.price))}</div>
             </div>
           } 
         </div>

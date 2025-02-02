@@ -1,3 +1,4 @@
+import { formatPriceCurrency } from '@/app/utils/formatPriceCurrency';
 import { StepIcon } from '../StepIcon';
 import { SelectedServices } from '../Stepper/Stepper.types';
 import styles from './Step.module.css';
@@ -20,7 +21,7 @@ export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, is
     if (!serviceDescription) return;
 
     return Object.entries(serviceDescription)
-      .map(([key, value]) => key === 'price' ? `${value}EUR` : value)
+      .map(([key, value]) => key === 'price' ? formatPriceCurrency(value) : value)
       .join("\u00A0\u00A0\u00A0");
   };
 

@@ -8,6 +8,11 @@ import { SelectedServices, StepperProps } from './Stepper.types';
 import { ActionBar } from '../ActionBar';
 import { Form, MockForm } from './StepperMockData';
 
+export type FormConfig = {
+  component: () => JSX.Element;
+  showServiceInActionBar: boolean;
+};
+
 export const Stepper = ({ translations, locale }: StepperProps) => {
   const { stepsTranslationsMap } = translations;
   const [selectedService, setSelectedService] = useState<SelectedServices>({});
@@ -17,17 +22,29 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
     setSelectedService({});
   };
 
-  const forms: Record<string, () => JSX.Element> = {
-    service: () =>
-      MockForm({
-        handleSubmit,
-        locale,
-        selectedService,
-        setSelectedService,
-      }),
-    date_time: () => Form({ handleSubmit, handleResetForm }),
-    contacts: () => Form({ handleSubmit, handleResetForm }),
-    finish: () => Form({ handleSubmit, handleResetForm }),
+  const forms: Record<string, FormConfig> = {
+    service: {
+      component: () =>
+        MockForm({
+          handleSubmit,
+          locale,
+          selectedService,
+          setSelectedService,
+        }),
+      showServiceInActionBar: true,
+    },
+    date_time: {
+      component: () => Form({ handleSubmit, handleResetForm }),
+      showServiceInActionBar: false,
+    },
+    contacts: {
+      component: () => Form({ handleSubmit, handleResetForm }),
+      showServiceInActionBar: false,
+    },
+    finish: {
+      component: () => Form({ handleSubmit, handleResetForm }),
+      showServiceInActionBar: false,
+    },
   };
 
   const {
@@ -44,6 +61,8 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
     bookingDetails,
   } = useStepper({ steps: forms, selectedService, setSelectedService });
 
+  console.log(bookingDetails);
+
   return (
     <div className={styles.stepperMainContainer}>
       {stepsNames.map((step, index) => (
@@ -52,7 +71,7 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
           index={index}
           steps={stepsNames}
           currentStep={currentStep}
-          form={forms[step]}
+          form={forms[step].component}
           stepsTranslationsMap={stepsTranslationsMap}
           isLastStep={isLastStep}
           stepIsCompleted={stepIsCompleted}
@@ -61,14 +80,14 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
       ))}
       {stepIsSubmitted[currentStep] && (
         <ActionBar
-          steps={stepsNames}
           currentStepIndex={currentStep}
-          selectedService={selectedService}
+          selectedService={bookingDetails[currentStep]}
           handleComplete={handleComplete}
           handleNext={handleNext}
           stepIsCompleted={stepIsCompleted}
           translations={translations}
           handleBack={handleBack}
+          showServiceInActionBar={forms[stepsNames[currentStep]].showServiceInActionBar}  
         />
       )}
     </div>

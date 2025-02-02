@@ -4,6 +4,7 @@ import styles from './Stepper.module.css';
 import { Locale } from '@/i18n/config.types';
 import { SelectedServices } from './Stepper.types';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { formatPriceCurrency } from '@/app/utils/formatPriceCurrency';
 
 const fetchContent = async (): Promise<PageLocaleData> => {
   const response = await fetch('/api/home-page/services');
@@ -87,7 +88,7 @@ export const MockForm = ({ handleSubmit, locale, selectedService, setSelectedSer
             {service.prices.map((price) => (
               <SubmitButton
                 key={price.unit}
-                title={`${service.name} ${price.unit} - ${price.price} EUR`}
+                title={`${service.name} ${price.unit} - ${formatPriceCurrency(Number(price.price))}`.trim()}
                 secondary={
                   service.name !== selectedService.name ||
                   price.price !== selectedService.price

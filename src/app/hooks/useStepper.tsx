@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { UseStepper } from './useStepper.types';
 import { SelectedServices } from '../components/Stepper/Stepper.types';
+import { FormConfig } from '../components/Stepper/Stepper';
 
 export interface useStepperProps {
-  steps: Record<string, () => JSX.Element>
+  steps: Record<string, FormConfig>
   selectedService: SelectedServices;
   setSelectedService: React.Dispatch<React.SetStateAction<SelectedServices>>
 }
