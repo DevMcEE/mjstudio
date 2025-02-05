@@ -21,10 +21,10 @@
     align-items: center;
     text-align: left;
     padding: 8px 0;
+    position: relative;
 }
 
 .stepItemTitle {
-    width: 100%;
     line-height: 0;
     padding: 10px 8px;
     color: black;
@@ -46,10 +46,16 @@
     height: 24px;
 }
 
+.stepItemDescription{
+    display: flex;
+}
+
 .stepFormContainer {
     margin: 0 0 0 0.6rem;
     border-left: 1px solid #bdbdbd;
     flex-grow: 1;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 .lastContainer {

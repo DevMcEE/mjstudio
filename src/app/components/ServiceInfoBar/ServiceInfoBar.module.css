@@ -1,0 +1,111 @@
+.serviceDescription,
+.servicePrice {
+  color: black;
+  font-size: medium;
+}
+
+.servicePrice {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.serviceSubDescription {
+  color: grey;
+  font-size: smaller;
+  margin-left: 10px;
+}
+
+.serviceInfoBarDetails,
+.serviceInfoBarDescription {
+  display: flex;
+  flex-direction: row;
+}
+
+.serviceInfoBarDetails {
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.serviceInfoBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 8px 16px;
+  margin-top: 6px;
+  align-items: center;
+  cursor: pointer;
+  font-style: normal;
+  line-height: 24px;
+  justify-content: space-between;
+}
+
+.serviceInfoBar.secondary {
+  width: 0;
+  top: 0;
+  left: 100px;
+  margin-top: 0;
+  gap: 0;
+  position: absolute;
+}
+
+.serviceDescription.secondary,
+.servicePrice.secondary {
+  color: grey;
+  font-size: smaller;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.serviceDescription.secondary {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.serviceDescription.secondary.date {
+    width: 100%;
+    overflow: none;
+    text-overflow: none;
+    white-space: none;
+  }
+  
+
+@media (min-width: 430px) {
+  .serviceDescription.secondary {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 412px) {
+  .serviceDescription.secondary {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 390px) {
+  .serviceDescription.secondary {
+    max-width: 105px;
+  }
+}
+
+@media (max-width: 375px) {
+  .serviceDescription.secondary {
+    max-width: 87px;
+  }
+}
+
+@media (max-width: 360px) {
+  .serviceDescription.secondary {
+    max-width: 76px;
+  }
+}
+
+@media (max-width: 344px) { 
+  .serviceDescription.secondary {
+    max-width: 56px;
+  }
+}

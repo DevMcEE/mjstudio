@@ -27,7 +27,7 @@ export const useStepper = ({ steps, selectedService, setSelectedService }: useSt
       ...prev, [currentStep]: selectedService
     }));
 
-  }, [selectedService]);
+  }, [selectedService,currentStep]);
 
   const handleReset = (): void => {
     setCurrentStep(0);

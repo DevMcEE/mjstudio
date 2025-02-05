@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { SelectedServices, StepperProps } from './Stepper.types';
 import { ActionBar } from '../ActionBar';
 import { Form, MockForm } from './StepperMockData';
+import { ServiceInfoBar } from '../ServiceInfoBar';
+import { InfoBarStyle } from '../ServiceInfoBar/ServiceInfoBar';
 
 export type FormConfig = {
   component: () => JSX.Element;
@@ -61,7 +63,11 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
     bookingDetails,
   } = useStepper({ steps: forms, selectedService, setSelectedService });
 
-  console.log(bookingDetails);
+  const infoBar = (index: number, variant: InfoBarStyle) => {
+    if (!bookingDetails[index]) return null;
+
+    return <ServiceInfoBar selectedService={bookingDetails[index]} variant={variant} />;
+  };
 
   return (
     <div className={styles.stepperMainContainer}>
@@ -75,8 +81,7 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
           stepsTranslationsMap={stepsTranslationsMap}
           isLastStep={isLastStep}
           stepIsCompleted={stepIsCompleted}
-          serviceDescription={bookingDetails[index]}
-        />
+        >{infoBar(index, "secondary")}</Step>
       ))}
       {stepIsSubmitted[currentStep] && (
         <ActionBar
@@ -87,8 +92,8 @@ export const Stepper = ({ translations, locale }: StepperProps) => {
           stepIsCompleted={stepIsCompleted}
           translations={translations}
           handleBack={handleBack}
-          showServiceInActionBar={forms[stepsNames[currentStep]].showServiceInActionBar}  
-        />
+          showServiceInActionBar={forms[stepsNames[currentStep]].showServiceInActionBar}
+        >{infoBar(currentStep, "primary")}</ActionBar>
       )}
     </div>
   );

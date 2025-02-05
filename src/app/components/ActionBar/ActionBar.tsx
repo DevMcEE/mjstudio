@@ -1,7 +1,6 @@
 import { SubmitButton } from '../SubmitButton';
 import styles from './ActionBar.module.css';
 import { SelectedServices, Translations } from '../Stepper/Stepper.types';
-import { formatPriceCurrency } from '@/app/utils/formatPriceCurrency';
 
 export interface ActionBarProps {
   translations: Translations;
@@ -11,26 +10,19 @@ export interface ActionBarProps {
   handleComplete: () => void;
   handleNext: () => void;
   handleBack: () => void;
-  showServiceInActionBar: boolean  
+  showServiceInActionBar: boolean;
+  children?: JSX.Element | null;
 }
 
-export const ActionBar = ({ currentStepIndex, selectedService, handleComplete, handleNext, stepIsCompleted, handleBack, translations, showServiceInActionBar }: ActionBarProps) => {
+export const ActionBar = ({ currentStepIndex, handleComplete, handleNext, stepIsCompleted, handleBack, translations, showServiceInActionBar, children }: ActionBarProps) => {
 
   const { next, submit, back } = translations;
-  
+
   return (
     <div className={styles.submitPopUp}>
       <div className={styles.submitButtonContainer}>
         <div className={styles.submitOptions}>
-          {showServiceInActionBar &&
-            <div className={styles.submitServiceDetails}>
-              <div className={styles.submitOrderDetails}>
-                <div className={styles.submitServiceDescription}>{selectedService.name}</div>
-                <div className={styles.submitServiceSubDescription}>{selectedService.unit}</div>
-              </div>
-              <div className={styles.submitServicePrice}>{formatPriceCurrency(Number(selectedService.price))}</div>
-            </div>
-          } 
+          {showServiceInActionBar && children}
         </div>
         <SubmitButton title={!stepIsCompleted[currentStepIndex] ? submit : next} onClick={!stepIsCompleted[currentStepIndex] ? handleComplete : handleNext} />
         {currentStepIndex !== 0 && <SubmitButton secondary={true} title={back} onClick={handleBack} />}

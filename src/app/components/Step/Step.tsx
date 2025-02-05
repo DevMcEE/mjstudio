@@ -1,6 +1,4 @@
-import { formatPriceCurrency } from '@/app/utils/formatPriceCurrency';
 import { StepIcon } from '../StepIcon';
-import { SelectedServices } from '../Stepper/Stepper.types';
 import styles from './Step.module.css';
 
 interface StepProps {
@@ -11,19 +9,12 @@ interface StepProps {
   isLastStep: boolean;
   form: () => JSX.Element;
   stepIsCompleted: boolean[];
-  serviceDescription: SelectedServices;
+  children?: JSX.Element | null;
 }
 
-export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, isLastStep, stepIsCompleted, serviceDescription }: StepProps) => {
+export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, isLastStep, stepIsCompleted, children}: StepProps) => {
 
   const step = Object.keys(stepsTranslationsMap)[index];
-  const selectedServiceDescription = (serviceDescription: SelectedServices) => {
-    if (!serviceDescription) return;
-
-    return Object.entries(serviceDescription)
-      .map(([key, value]) => key === 'price' ? formatPriceCurrency(value) : value)
-      .join("\u00A0\u00A0\u00A0");
-  };
 
   return (
     <div className={`${styles.stepSection} ${index !== currentStep ? styles.inactive : styles.active}`}>
@@ -32,9 +23,9 @@ export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, is
           <div className={styles.stepIcon}>
             <StepIcon number={index + 1} isActive={index === currentStep} isCompleted={stepIsCompleted[index]} />
           </div>
-          <div>
+          <div className={styles.stepItemDescription}>
             <span className={styles.stepItemTitle}>{stepsTranslationsMap[step]}</span>
-            <span className={styles.stepItemServiceDescription}>{selectedServiceDescription(serviceDescription)}</span>
+            {index !== currentStep && children}
           </div>
         </span>
       </div>

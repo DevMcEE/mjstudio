@@ -43,8 +43,6 @@
     flex-direction: row;
     gap: 4px;
     white-space: nowrap;
-    padding: 8px 16px;
-    margin-top: 6px;
     align-items: center;
     cursor: pointer;
     font-style: normal;
