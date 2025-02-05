@@ -1,0 +1,15 @@
+.timeGroupsContainer{
+    display: flex;
+    flex-direction: column;
+}
+.timeCellHeading {
+    color:#000;
+    font-weight: bold;
+    font-size:15px;
+    text-transform: capitalize;
+}
+.timeCellsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}

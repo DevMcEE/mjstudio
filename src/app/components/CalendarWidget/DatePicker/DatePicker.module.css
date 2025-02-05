@@ -1,0 +1,40 @@
+.button {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dataPickerContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.arrowButton{
+    background-color: #fff;
+    color:#000;
+    width: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    height: 20px;
+}
+.cellsContainer{
+    display:flex;
+    justify-content: space-around;
+
+    align-items: center;
+    width: 100%;
+}
+.dayCellContainer{
+    width: fit-content;
+    height: fit-content;
+}
+.widgetContainer{
+    display: flex;
+    flex-direction: column;
+}

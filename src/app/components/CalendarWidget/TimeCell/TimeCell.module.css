@@ -1,0 +1,25 @@
+.button {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.timeCell{
+    width:71px;
+    height:33px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: #ffff;
+    color: #000;
+    text-align: center;
+}
+.selected{
+    background-color: #000 !important;
+    color:#fff !important;
+    border: 1px solid #000 !important;
+    border-radius: 8px;
+}
+.unavailable{
+    color:#bababa !important;
+    border: 1px solid #bababa !important;
+}
