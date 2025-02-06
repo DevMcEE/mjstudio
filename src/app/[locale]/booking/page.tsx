@@ -1,21 +1,34 @@
-import styles from "./page.module.css";
-import { DatePicker } from "@/app/components/CalendarWidget/DatePicker";
-import { TimeCellsContainer } from "@/app/components/CalendarWidget/TimeCellsContainer";
+import { Stepper } from "@/app/components/Stepper/Stepper";
+import styles from "./booking.module.css";
+import { useLocale, useTranslations } from "next-intl";
+import { Locale } from "@/i18n/config.types";
+import { Translations } from "@/app/components/Stepper/Stepper.types";
 
-export default async function BookingPage() {
+export default function HomePage() {
+  const t = useTranslations("booking");
+  const locale = useLocale() as Locale;
+
+  const translations: Translations = {
+    stepsTranslationsMap: {
+      'service': t('service'),
+      'date_time': t('date_time'),
+      'contacts': t('contacts'),
+      'finish': t('finish')
+    },
+    submit: t('submit'),
+    next: t('next'),
+    back: t('back'),
+  };
+
   return (
-    <div className={styles.mainContainer}>
-      <h1 className={styles.headingText}>Booking</h1>
-      <div className={styles.stepperContainer}>
+    <div className={styles.main}>
+      <div className={styles.header}>
+        <h1>{t("booking")}</h1>
       </div>
-      <div className={styles.serviceDescriptionContainer}>
-        <p>Service:</p>
-      </div>
-      <div className={styles.calendarContainer}>
-        <p>Select Date & Time:</p>
-        <DatePicker/>
-        <TimeCellsContainer API_URL={process.env.API_URL || ""}/>
+      <div className={styles.stepper}>
+        <Stepper translations={translations} locale={locale}/>
       </div>
     </div>
+
   );
 }
