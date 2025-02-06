@@ -34,7 +34,7 @@ export const DatePicker = () => {
   
   return (
     <div className={styles.dataPickerContainer}>
-      <button onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.button} ${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</button>
+      <button onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</button>
       <div className={styles.cellsContainer}>
         {cellsList.map((item, index) => {
           const isToday = item.date.startOf('day').equals(DateTime.now().startOf('day'));
@@ -49,7 +49,7 @@ export const DatePicker = () => {
           );
         })}
       </div>
-      <button onClick={() => dayCellsMapsClient.scrollTo("right")} className={`${styles.button} ${styles.arrowButton} ${styles.rightArrowButton}`}>&rsaquo;</button>
+      <button onClick={() => dayCellsMapsClient.scrollTo("right")} className={`${styles.arrowButton} ${styles.rightArrowButton}`}>&rsaquo;</button>
     </div>
   );
 };
