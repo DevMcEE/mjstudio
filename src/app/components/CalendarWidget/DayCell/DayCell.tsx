@@ -10,7 +10,7 @@ interface DayCellProps {
 }
 
 export const DayCell = ({ onClick, isSelected, date, isCurrentDay, isUnavailable }: DayCellProps) => {
-  const classes = `${styles.cell}${isUnavailable ? ` ${styles.unavailable}` : ( isSelected ? ` ${styles.selected}` : '' )}${isCurrentDay ? ` ${styles.currentDay}` : ''}`;
+  const classes = `${styles.button} ${styles.cell}${isUnavailable ? ` ${styles.unavailable}` : ( isSelected ? ` ${styles.selected}` : '' )}${isCurrentDay ? ` ${styles.currentDay}` : ''}`;
 
   return (
     <button onClick={!isUnavailable ? onClick : ()=>{}} className={classes}>

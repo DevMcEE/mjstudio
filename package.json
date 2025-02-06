@@ -10,6 +10,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier",
     "test": "vitest run",
+    "test:ui": "vitest --ui",
     "test:watch": "vitest watch",
     "prepare": "husky"
   },
@@ -24,11 +25,14 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/ui": "^3.0.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.1.5",
     "eslint-config-prettier": "^10.0.1",
@@ -38,7 +42,7 @@
     "node-mocks-http": "^1.16.2",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.2"
+    "vitest": "^3.0.5"
   },
   "engines": {
     "node": ">=20.18.1",

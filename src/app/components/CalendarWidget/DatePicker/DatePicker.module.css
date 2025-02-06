@@ -1,3 +1,9 @@
+.button {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .dataPickerContainer{
     display: flex;
     width: 100%;

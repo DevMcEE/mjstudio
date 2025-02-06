@@ -1,3 +1,9 @@
+.button {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .cell{
     width: 46px;
     height: 60px;

@@ -1,3 +1,9 @@
+.button {
+    all: unset;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .timeCell{
     width:71px;
     height:33px;

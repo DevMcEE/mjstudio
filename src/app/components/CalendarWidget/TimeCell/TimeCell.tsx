@@ -10,7 +10,7 @@ export interface TimeCellProps {
 
 export const TimeCell = ({time, selected, onClick, available}: TimeCellProps) => {
   return (
-    <button className={`${styles.timeCell} ${selected ? styles.selected : ""} ${!available ? styles.unavailable : ""}`} onClick={onClick}>
+    <button className={`${styles.button} ${styles.timeCell} ${selected ? styles.selected : ""} ${!available ? styles.unavailable : ""}`} onClick={onClick}>
       <p>{time}</p>
     </button>
   );

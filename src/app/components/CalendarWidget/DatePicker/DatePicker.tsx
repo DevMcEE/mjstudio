@@ -37,7 +37,8 @@ export const DatePicker = () => {
       <button onClick={() => dayCellsMapsClient.scrollTo("left")} className={`${styles.arrowButton} ${styles.leftArrowButton}`}>&lsaquo;</button>
       <div className={styles.cellsContainer}>
         {cellsList.map((item, index) => {
-            const isToday = item.date.startOf('day').equals(DateTime.now().startOf('day'));
+          const isToday = item.date.startOf('day').equals(DateTime.now().startOf('day'));
+
           return (
             <DayCell key={index}
               onClick={()=>setSelectedCellId(item.id)}
