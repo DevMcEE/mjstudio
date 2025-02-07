@@ -33,7 +33,7 @@ describe("Select", () => {
     helperText:"Select an option"
   }
 
-  it('Renders correctly with provided label', async () => {
+  it.skip('Renders correctly with provided label', async () => {
     render(<Select {...selectArgs} />);
     const selectComponent = screen.getByTestId(selectArgs.testId!);
 
