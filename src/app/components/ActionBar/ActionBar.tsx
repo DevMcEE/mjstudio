@@ -4,7 +4,7 @@ import { SelectedServices, Translations } from '../Stepper/Stepper.types';
 
 export interface ActionBarProps {
   translations: Translations;
-  stepIsCompleted: boolean[];
+  completedSteps: boolean[];
   currentStepIndex: number;
   selectedService: SelectedServices;
   handleComplete: () => void;
@@ -14,7 +14,7 @@ export interface ActionBarProps {
   children?: JSX.Element | null;
 }
 
-export const ActionBar = ({ currentStepIndex, handleComplete, handleNext, stepIsCompleted, handleBack, translations, showServiceInActionBar, children }: ActionBarProps) => {
+export const ActionBar = ({ currentStepIndex, handleComplete, handleNext, completedSteps, handleBack, translations, showServiceInActionBar, children }: ActionBarProps) => {
 
   const { next, submit, back } = translations;
 
@@ -24,7 +24,7 @@ export const ActionBar = ({ currentStepIndex, handleComplete, handleNext, stepIs
         <div className={styles.submitOptions}>
           {showServiceInActionBar && children}
         </div>
-        <SubmitButton title={!stepIsCompleted[currentStepIndex] ? submit : next} onClick={!stepIsCompleted[currentStepIndex] ? handleComplete : handleNext} />
+        <SubmitButton title={!completedSteps[currentStepIndex] ? submit : next} onClick={!completedSteps[currentStepIndex] ? handleComplete : handleNext} />
         {currentStepIndex !== 0 && <SubmitButton secondary={true} title={back} onClick={handleBack} />}
       </div>
     </div>

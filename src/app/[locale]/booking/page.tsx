@@ -3,6 +3,7 @@ import styles from "./booking.module.css";
 import { useLocale, useTranslations } from "next-intl";
 import { Locale } from "@/i18n/config.types";
 import { Translations } from "@/app/components/Stepper/Stepper.types";
+import { steps } from "@/app/components/Stepper/steps";
 
 export default function HomePage() {
   const t = useTranslations("booking");
@@ -26,7 +27,7 @@ export default function HomePage() {
         <h1>{t("booking")}</h1>
       </div>
       <div className={styles.stepper}>
-        <Stepper translations={translations} locale={locale}/>
+        <Stepper translations={translations} locale={locale} steps={steps}/>
       </div>
     </div>
 

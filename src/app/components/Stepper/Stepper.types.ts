@@ -9,6 +9,7 @@ export interface Translations {
 }
 
 export interface StepperProps {
+    steps: FormStep[];
     translations: Translations;
     locale: Locale;
 }
@@ -26,3 +27,27 @@ export interface SelectedServices {
     date?: string;
     time?: string;
 }
+
+export type FormComponentProps = {
+    locale?: Locale;
+    selectedService?: SelectedServices;
+    setSelectedService?: React.Dispatch<React.SetStateAction<SelectedServices>>;
+    handleSubmit: () => void;
+    handleResetForm?: () => void;
+  };
+  
+export type FormConfig = {
+    component: (props:FormComponentProps) => JSX.Element;
+    showServiceInActionBar: boolean;
+  };
+  
+export type FormStep = FormConfig & {
+      name: string;
+    };
+  
+export type FormCollection = Record<string, FormConfig>;
+  
+export interface CreateFormsParams {
+    steps: FormStep[];
+    dependencies?: FormComponentProps;
+  }
