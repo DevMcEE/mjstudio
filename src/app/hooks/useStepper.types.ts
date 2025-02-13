@@ -20,4 +20,5 @@ export interface useStepperProps {
     steps: FormStep[];
     selectedService: SelectedServices;
     setSelectedService: React.Dispatch<React.SetStateAction<SelectedServices>>
-  }
+}
+

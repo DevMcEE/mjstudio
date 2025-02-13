@@ -11,6 +11,7 @@ import { InfoBarStyle } from '../ServiceInfoBar/ServiceInfoBar';
 import { createForms } from './createForms';
 
 export const Stepper = ({ translations, locale, steps }: StepperProps) => {
+
   const { stepsTranslationsMap } = translations;
   const [selectedService, setSelectedService] = useState<SelectedServices>({});
 
@@ -34,7 +35,6 @@ export const Stepper = ({ translations, locale, steps }: StepperProps) => {
   } = useStepper({ steps, selectedService, setSelectedService });
 
   const forms = createForms({ steps, dependencies: { locale, selectedService, setSelectedService, handleSubmit, handleResetForm } });
-
   const infoBar = (index: number, variant: InfoBarStyle) => {
     if (!bookingDetails[index]) return null;
 

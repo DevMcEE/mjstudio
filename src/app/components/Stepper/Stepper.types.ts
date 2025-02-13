@@ -50,4 +50,4 @@ export type FormCollection = Record<string, FormConfig>;
 export interface CreateFormsParams {
     steps: FormStep[];
     dependencies?: FormComponentProps;
-  }
+  };
