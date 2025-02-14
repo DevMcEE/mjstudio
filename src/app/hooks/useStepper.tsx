@@ -1,22 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { UseStepper } from './useStepper.types';
+import { UseStepper, useStepperProps } from './useStepper.types';
 import { SelectedServices } from '../components/Stepper/Stepper.types';
-import { FormConfig } from '../components/Stepper/Stepper';
-
-export interface useStepperProps {
-  steps: Record<string, FormConfig>
-  selectedService: SelectedServices;
-  setSelectedService: React.Dispatch<React.SetStateAction<SelectedServices>>
-}
 
 export const useStepper = ({ steps, selectedService, setSelectedService }: useStepperProps): UseStepper => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [completedSteps, setCompletedSteps] = useState<boolean[]>([]);
   const [submittedSteps, setSubmittedSteps] = useState<boolean[]>([]);
   const [bookingDetails, setBookingDetails] = useState<Record<string, SelectedServices>>({});
-  const stepsNames = Object.keys(steps);
+  const stepsNames  = steps.map((step) => step.name);
 
   const handleBack = (): void => setCurrentStep((prev) => prev - 1);
 
@@ -74,8 +67,8 @@ export const useStepper = ({ steps, selectedService, setSelectedService }: useSt
     stepsNames,
     currentStep,
     isLastStep,
-    stepIsSubmitted: submittedSteps,
-    stepIsCompleted: completedSteps,
+    submittedSteps,
+    completedSteps,
     handleSubmit,
     handleComplete,
     handleNext,
