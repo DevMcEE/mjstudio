@@ -1,5 +1,4 @@
-import { EmailInput } from "@/app/components/EmailInput/EmailInput";
-import { EmailInputProps } from "@/app/components/EmailInput/EmailInput.types";
+import { EmailInput, EmailInputProps } from "@/app/components/EmailInput";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
