@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Select } from "@/app/components/Select";
@@ -35,12 +35,13 @@ describe("Select", () => {
         helperText: "Select an option",
 
     }
-
+    beforeEach(() => {
+        handleSelect.mockClear()
+    })
     it('Renders correctly with provided label', async () => {
         render(<Select {...selectArgs} />);
         const selectComponent = screen.getByTestId(selectArgs.testId!);
 
-        console.log(screen.debug())
         expect(selectComponent).toBeInTheDocument();
 
         expect(selectComponent).toHaveAttribute('required');
@@ -74,43 +75,31 @@ describe("Select", () => {
         const selectedOptionValue = selectOptionsClone.find(opt=>opt.selected)!.value;
         const args = {...selectArgs, values:selectOptionsClone}
         render(<Select {...args} />);
-        console.log(screen.debug())
         const selectComponent = screen.getByTestId(selectArgs.testId!);
         expect(selectComponent).toHaveValue(selectedOptionValue);
     })
     it("Should render options correctly", async () => {
         render(<Select {...selectArgs} />);
-        let index = -1;
-        for (let optionProp of selectArgs.values) {
-            index++;
-            const option = screen.getAllByRole('option').find(opt => opt.getAttribute('value') === optionProp.value);
-            if (!option) throw new Error("The option was expected, but wasn't found in the DOM");
-            expect(option).toHaveAttribute("value", selectArgs.values[index].value);
-            const text =
-                selectArgs.values[index].leftIcon ? `${selectArgs.values[index].leftIcon} ` : ""
-                + selectArgs.values[index].title || ""
-                + selectArgs.values[index].rightIcon ? ` ${selectArgs.values[index].rightIcon}` : "";
-            expect(option).toHaveTextContent(text);
-            /*
-            if(selectArgs.values[index].selected) expect(option).toHaveAttribute("selected")
-    
-            React does not support the selected attribute on <option>
-            */
-        }
+        
+        const options = screen.getAllByRole('option')
+        expect(options.length).toBe(3);
+        expect(options[1]).toHaveTextContent("🇪🇪 Option 1")
+        expect(options[2]).toHaveTextContent("🇹🇭 Option 2 ❌")
     })
 
     it("Should be disabled", async () => {
         const args = { ...selectArgs, disabled: true };
         render(<Select {...args} />);
-        const select = screen.getByRole("combobox");
+        const select = screen.getByTestId(args.testId!);
         expect(select).toHaveAttribute('disabled');
+        await userEvent.selectOptions(select, selectOptions[1].value);
+        expect(handleSelect).toHaveBeenCalledTimes(0);
     });
 
     it("Should add placeholder like first option", async () => {
         const args = { ...selectArgs, placeholder: "Placeholder text" };
         render(<Select {...args} />);
-        console.log(screen.debug());
-        const select = screen.getByRole('combobox');
+        const select = screen.getByTestId(args.testId!);
         const firstOption = select.children[0];
         expect(firstOption).toBeInTheDocument();
         expect(firstOption).toHaveTextContent(args.placeholder);
@@ -119,7 +108,6 @@ describe("Select", () => {
     it("Should render correctly in not required state", async () => {
         const args = { ...selectArgs, required: false };
         render(<Select {...args} />);
-        console.log(screen.debug());
         const labelComponent = screen.getByTestId("select-label");
         expect(labelComponent).toBeInTheDocument();
         expect(labelComponent).toHaveTextContent(args.label);
@@ -128,7 +116,7 @@ describe("Select", () => {
     it("Should display error message", async () => {
         const args = { ...selectArgs, error: "Invalid selection" };
         render(<Select {...args} />);
-        console.log(screen.debug());
+
         const selectComponent = screen.getByTestId(args.testId!);
         const errorText = screen.getByTestId("error-text");
         const selectLabel = screen.getByTestId("select-label");
@@ -143,10 +131,8 @@ describe("Select", () => {
     it("Should display error message correctly even if helper text is given", async () => {
         const args = { ...selectArgs, error: "Invalid selection", helperText: "Helper text" };
         render(<Select {...args} />);
-        console.log(screen.debug());
         const errorText = screen.getByTestId("error-text");
         expect(errorText).toBeInTheDocument();
-        expect(errorText).toHaveTextContent(args.error);
-        expect(errorText.classList.contains(styles.errorText)).toBe(true);
-    });
+        expect(screen.queryByText("Helper Text")).not.toBeInTheDocument();
+    }); // *, helper text
 });

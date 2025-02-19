@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, useState } from "react";
 import { SelectOptionProps, SelectProps } from "./Select.types";
@@ -19,6 +19,7 @@ export const Select: FC<SelectProps<SelectOptionProps>> = ({
 }) => {
   const selectId = testId || "select-component";
   const [selectedValue, setSelectedValue] = useState(values.find(opt=>opt.selected)?.value || value);
+
   return (
     <div className={styles.selectContainer}>
       <label className={`${styles.selectLabel} ${error && styles.errorText}`} htmlFor={selectId} data-testid="select-label">
@@ -29,8 +30,8 @@ export const Select: FC<SelectProps<SelectOptionProps>> = ({
         data-testid={testId}
         value={selectedValue}
         onChange={(e) => {
-            setSelectedValue(e.target.value);
-            onSelect(e.target.value);
+          setSelectedValue(e.target.value);
+          onSelect(e.target.value);
         }}
         required={required}
         className={`${styles.selectDropdown} ${error ? styles.errorBorder : ""}`}
