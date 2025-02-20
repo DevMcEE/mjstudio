@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 
 import { describe, expect, it, vi } from "vitest";
 
-describe.skip("Email Input", () => {
+describe("Email Input", () => {
   let onChange = vi.fn();
 
   let defaultEmailInputProps: EmailInputProps = {
@@ -13,7 +13,7 @@ describe.skip("Email Input", () => {
     onChange,
     testId: "email-input",
     placeholder: "your@mail.com",
-    helpertext: "Enter your email"
+    helperText: "Enter your email",
   };
 
   it('Should render with helper text', () => {
@@ -21,32 +21,37 @@ describe.skip("Email Input", () => {
 
     const emailComponent = screen.getByTestId(defaultEmailInputProps.testId!);
     expect(emailComponent).toBeInTheDocument();
-
-    expect(emailComponent).not.toHaveAttribute('required');
-    expect(emailComponent).toHaveAccessibleName('Email');
-
-    expect(within(emailComponent).getByText(defaultEmailInputProps.helpertext!)).toBeInTheDocument();
-    expect(emailComponent).toHaveAccessibleName(defaultEmailInputProps.label);
+    const inputElement = screen.getByRole('textbox');
+    expect(inputElement).not.toHaveAttribute('required');
+    expect(inputElement).toHaveAccessibleName(defaultEmailInputProps.label);
+    expect(within(emailComponent).queryByText(defaultEmailInputProps.helperText!)).toBeInTheDocument();
     const placeholder = screen.queryByPlaceholderText(defaultEmailInputProps.placeholder!);
     expect(placeholder).toBeInTheDocument();
   });
 
   it('Should render with error text, hiding helper text', () => {
-    render(<EmailInput {...defaultEmailInputProps} error="Some error happen" />);
 
+    let defaultEmailInputProps: EmailInputProps = {
+      label: "Email",
+      value: "",
+      onChange,
+      testId: "email-input",
+      helperText: "Enter your email",
+      error: "Some error happen"
+    };
+    
+    render(<EmailInput {...defaultEmailInputProps}/>);
     const emailComponent = screen.getByTestId(defaultEmailInputProps.testId!);
     expect(emailComponent).toBeInTheDocument();
 
-    expect(within(emailComponent).getByText(defaultEmailInputProps.helpertext!)).not.toBeInTheDocument();
-    expect(within(emailComponent).getByText(defaultEmailInputProps.error!)).toBeInTheDocument();
-    // TODO: Check that component has error styles (classes)
+    expect(within(emailComponent).queryByText(defaultEmailInputProps.helperText!)).not.toBeInTheDocument();
+    expect(within(emailComponent).getByText("Some error happen")).toBeInTheDocument();
   });
 
   it('Should call onChange on user input', async () => {
     let inputValue = ""
-    const onChange =  vi.fn((event) => inputValue += event.target.value); 
-    render(<EmailInput {...defaultEmailInputProps} onChange={onChange} value={inputValue}/>);
-
+    const onChange = vi.fn((event) => inputValue += event.target.value);
+    render(<EmailInput {...defaultEmailInputProps} onChange={onChange} value={inputValue} />);
     const emailComponent = screen.getByRole('textbox');
     expect(emailComponent).toBeInTheDocument();
 
@@ -57,8 +62,8 @@ describe.skip("Email Input", () => {
 
   it('Should not call onChange on user input when it is disabled', async () => {
     let inputValue = "";
-    const onChange =  vi.fn((event) => inputValue += event.target.value); 
-    
+    const onChange = vi.fn((event) => inputValue += event.target.value);
+
     render(<EmailInput {...defaultEmailInputProps} disabled onChange={onChange} value={inputValue} />);
     const emailComponent = screen.getByRole('textbox');
     expect(emailComponent).toBeInTheDocument();
@@ -70,6 +75,7 @@ describe.skip("Email Input", () => {
 
   it('Should render and handle required state', () => {
     render(<EmailInput {...defaultEmailInputProps} required={true} />);
+
     const emailComponent = screen.getByRole('textbox');
     expect(emailComponent).toBeInTheDocument();
     expect(emailComponent).toHaveAttribute('required');
