@@ -2,9 +2,7 @@ import { FC } from "react";
 import { EmailInputProps } from "./EmailInput.types";
 import styles from "./EmailInput.module.css";
 
-export const EmailInput: FC<EmailInputProps> = ({ ...props }) => {
-
-  const { testId, required, label, value, error, helperText, placeholder, disabled, onChange } = props;
+export const EmailInput: FC<EmailInputProps> = ({ testId, required, label, value, error, helperText, placeholder, disabled, onChange, id, name}) => {
 
   return (
     <div
@@ -13,13 +11,14 @@ export const EmailInput: FC<EmailInputProps> = ({ ...props }) => {
     >
       <label
         className={`${!!error ? styles.emailInputLabelError : ""} ${styles.emailInputLabel}`}
-        htmlFor={`${testId}`}>
+        htmlFor={id}>
         {label}
         {required && <span className={`${!!error ? styles.requiredError : ""} ${styles.required}`} aria-hidden={required}> *</span>}
       </label>
       <div className={styles.emailInputContainer}>
         <input
-          id={testId}
+          name={name}
+          id={id}
           aria-label={required ? `${label} *` : label}
           aria-describedby={error ? `${testId}-error` : `${testId}-helper`}
           aria-invalid={!!error}

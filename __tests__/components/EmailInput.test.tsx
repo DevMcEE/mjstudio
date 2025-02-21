@@ -30,17 +30,8 @@ describe("Email Input", () => {
   });
 
   it('Should render with error text, hiding helper text', () => {
-
-    let defaultEmailInputProps: EmailInputProps = {
-      label: "Email",
-      value: "",
-      onChange,
-      testId: "email-input",
-      helperText: "Enter your email",
-      error: "Some error happen"
-    };
     
-    render(<EmailInput {...defaultEmailInputProps}/>);
+    render(<EmailInput {...defaultEmailInputProps} error="Some error happen" />);
     const emailComponent = screen.getByTestId(defaultEmailInputProps.testId!);
     expect(emailComponent).toBeInTheDocument();
 
@@ -80,5 +71,14 @@ describe("Email Input", () => {
     expect(emailComponent).toBeInTheDocument();
     expect(emailComponent).toHaveAttribute('required');
     expect(emailComponent).toHaveAccessibleName('Email *');
+  });
+
+  it('Should render id and name in input', () => {
+    render(<EmailInput {...defaultEmailInputProps} name="email" id="email" />);
+
+    const emailComponent = screen.getByRole('textbox');
+    expect(emailComponent).toBeInTheDocument();
+    expect(emailComponent).toHaveAttribute("name", "email");
+    expect(emailComponent).toHaveAttribute("id", "email");
   });
 });

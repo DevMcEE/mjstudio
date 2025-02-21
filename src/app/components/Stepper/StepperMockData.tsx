@@ -16,8 +16,8 @@ export const MockForm = ({ handleSubmit, handleResetForm }: FormComponentProps):
     <div className={styles.mock}>
       <button onClick={handleSubmit}>CONFIRM</button>
       <button onClick={handleResetForm}>RESET</button>
-      <EmailInput testId="email-input" label="Email" helperText="Enter your email" required={true} error={'Some error happen'} placeholder='your@mail.com' value={emailValue} onChange={handleEmailInput} />
-      <EmailInput testId="email-input" label="Email" helperText="Enter your email" placeholder='your@mail.com' value={emailValue} onChange={handleEmailInput} />
+      <EmailInput testId="email-input" id='emailId' label="Email" helperText="Enter your email" required={true} error={'Some error happen'} placeholder='your@mail.com' value={emailValue} onChange={handleEmailInput} />
+      <EmailInput testId="email-input" id='emailId' label="Email" helperText="Enter your email" placeholder='your@mail.com' value={emailValue} onChange={handleEmailInput} />
     </div>
   );
 };
