@@ -82,13 +82,7 @@
 
 }
 
-@media screen and (max-width: 414px) {
-  .submitPopUp {
-    position: fixed;
-  }
-}
-
-@media screen and (max-height: 414px) {
+@media screen and (max-width: 414px), (max-height: 414px) {
   .submitPopUp {
     position: fixed;
     max-width: none;
