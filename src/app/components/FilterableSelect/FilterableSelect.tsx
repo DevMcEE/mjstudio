@@ -14,7 +14,9 @@ export const FilterableSelect: FC<FilterableSelectProps> = ({
   const args = {
     value,
     values,
-    onSelect,
+    onSelect: (value: string) => {
+      onSelect(value);
+    },
     required,
     helperText,
     error,

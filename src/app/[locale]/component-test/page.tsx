@@ -3,8 +3,9 @@
 import { SelectOptionProps, SelectProps } from "@/app/components/Select/Select.types";
 import { Select } from "@/app/components/Select";
 import { CloseIcon, InstagramIcon } from "@/app/components/icons";
+import { useState } from "react";
 export default function BookingPage() {
-
+  const [selected, setSelected]= useState<string>("");
   const selectOptions: SelectOptionProps[] = [
     {
       value: "value1",
@@ -47,10 +48,10 @@ export default function BookingPage() {
   ];
   const selectArgs: SelectProps<SelectOptionProps> = {
     label: "Select label",
-    value: "",
+    value: selected,
     values: selectOptions,
     disabled: false,
-    onSelect: ()=>{},
+    onSelect: (value) => setSelected(value),
     required: true,
     testId: "selectId",
     placeholder:"placeholdertext",
@@ -60,6 +61,7 @@ export default function BookingPage() {
   return (
     <div>
       <Select {...selectArgs} />
+      <p>{selected}</p>
       <script>
         {`const body = document.getElementsByTagName("body");
         body[0].style.backgroundColor = "white";`}

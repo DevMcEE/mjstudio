@@ -1,14 +1,13 @@
-import { FC, useState, useEffect, useRef } from "react";
+import { FC, useMemo } from "react";
 import { SelectOptionProps } from "./Select.types";
 import styles from "./Select.module.css";
-import EventEmitterClient from "@/app/services/EventEmitterClient";
 
 export interface OnSelectOptionProps {
     value: string,
-    title: string
+    // title: string
 }
 interface AdditionalProps {
-    onSelectOption: ({value, title}: OnSelectOptionProps) => void;
+    onSelectOption: (value: string) => void;
 }
 
 export const SelectOption: FC<SelectOptionProps & AdditionalProps>  = ({
@@ -19,27 +18,10 @@ export const SelectOption: FC<SelectOptionProps & AdditionalProps>  = ({
   LeftIcon,
   onSelectOption
 }) => {
-  const [isSelected, setIsSelected] = useState<boolean>(selected);
-  const classes = [styles.selectOption, isSelected && styles.selected].filter(Boolean).join(" ");
-  const isSelectedRef = useRef<boolean>(isSelected);
-
-  const onClickFunc = () => setIsSelected(true);
-
-  useEffect(()=>{
-    EventEmitterClient.on("onSelectOption", (optionValue)=>{
-      if(optionValue !== value && isSelectedRef.current)setIsSelected(false);
-    });
-
-    return () => EventEmitterClient.unsubscribe("onSelectOption");
-  }, []);
-
-  useEffect(()=>{
-    if(isSelected) onSelectOption({value, title});
-    isSelectedRef.current = isSelected;
-  }, [isSelected]);
+  const classes = useMemo(() => [styles.selectOption, selected && styles.selected].filter(Boolean).join(" ") , [selected]);
 
   return (
-    <button data-testid={"option"} className={classes} onClick={onClickFunc} key={value}>
+    <button data-testid={"option"} role="option" className={classes} onClick={() =>onSelectOption(value)} key={value}>
       {LeftIcon && <LeftIcon/>}
       <p>{title}</p>  
       {RightIcon && <RightIcon/>}

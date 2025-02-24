@@ -1,8 +1,7 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useMemo } from "react";
 import { SelectOptionProps, SelectProps } from "./Select.types";
-import { OnSelectOptionProps, SelectOption } from "./SelectOption";
+import { SelectOption } from "./SelectOption";
 import styles from "./Select.module.css";
-import EventEmitterClient from "@/app/services/EventEmitterClient";
 
 export const Select: FC<SelectProps<SelectOptionProps>> = ({
   label,
@@ -16,7 +15,6 @@ export const Select: FC<SelectProps<SelectOptionProps>> = ({
   helperText,
   error
 }) => {
-  const [selectedOption, setSelectedOption] = useState({value:value, title:""});
   const [isOptionListHidden, setIsOptionListHidden] = useState<boolean>(true);
 
   const labelClasses = [styles.selectLabel, required && styles.required, error && styles.errorText].filter(Boolean).join(" ");
@@ -28,27 +26,27 @@ export const Select: FC<SelectProps<SelectOptionProps>> = ({
 
   const onSelectButtonClick = !disabled ? () => setIsOptionListHidden(!isOptionListHidden) : () => {};
 
-  const onSelectOption = (props: OnSelectOptionProps) => {
-    setSelectedOption(props);
+  const onSelectOption = (value: string) => {
+    setIsOptionListHidden(true);
+    onSelect(value);
   };
 
   const selectId = testId || "select-component";
 
-  useEffect(()=>{
-    onSelect(selectedOption.value);
-    EventEmitterClient.emit("onSelectOption", selectedOption.value);
-  }, [selectedOption.value]);
+  const title = useMemo(() => values.find((option) =>option.value === value)?.title, [value, values]);
 
   return (
     <div data-testid={selectId} className={styles.selectContainer}>
       <p data-testid={"select-label"} className={labelClasses}>{`${label} ${required && "*"}`}</p>
       <div className={selectWrapperClasses}>
-        <button data-testid={"select-button"} className={selectButtonClasses} onClick={onSelectButtonClick}>
-          <span>{selectedOption.title}</span>
+        <button data-testid={"select-button"} role="select" className={selectButtonClasses} onClick={onSelectButtonClick}>
+          <span>{title}</span>
         </button>
         <div data-testid={"option-list"} className={optionsListClasses}>
-          <SelectOption value={""} selected={false} title={placeholder || ""} onSelectOption={onSelectOption}/>
-          { values.map(value => <SelectOption key={value.value} onSelectOption={onSelectOption} {...value}/>) }
+          <SelectOption value={""} selected={false} title={placeholder || ""} onSelectOption={onSelect}/>
+          { values.map(({ value: optionValue,...optionProps}) => <SelectOption {...optionProps} value ={optionValue}
+            selected={value===optionValue} key={optionValue} 
+            onSelectOption={onSelectOption} />) }
         </div>
       </div>
       <p className={helperTextClasses}>{helperText}</p>
