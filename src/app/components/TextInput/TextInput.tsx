@@ -21,7 +21,7 @@ export const TextInput: FC<TextInputProps> = ({ testId, type, required, label, v
           name={name}
           id={id}
           aria-label={required ? `${label} *` : label}
-          aria-describedby={error ? `${testId}-error` : `${testId}-helper`}
+          aria-describedby={error ? `${id}-error` : `${id}-helper`}
           aria-invalid={!!error}
           disabled={disabled}
           required={required}
@@ -30,8 +30,8 @@ export const TextInput: FC<TextInputProps> = ({ testId, type, required, label, v
           value={value}
           placeholder={placeholder} />
         <div className={styles.textInputMessageContainer}>  
-          {error && <span className={styles.textInputErrorText}  id={`${testId}-error`}>{error}</span>}
-          {!error && helperText && <span className={styles.textInputHelperText} id={`${testId}-helper`}>{helperText}</span>}
+          {error && <span className={styles.textInputErrorText}  id={`${id}-error`}>{error}</span>}
+          {!error && helperText && <span className={styles.textInputHelperText} id={`${id}-helper`}>{helperText}</span>}
         </div>
       </div> 
     </div>
