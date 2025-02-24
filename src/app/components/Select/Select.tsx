@@ -1,9 +1,8 @@
-"use client";
-
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { SelectOptionProps, SelectProps } from "./Select.types";
-import { SelectOption } from "./SelectOption";
+import { OnSelectOptionProps, SelectOption } from "./SelectOption";
 import styles from "./Select.module.css";
+import EventEmitterClient from "@/app/services/EventEmitterClient";
 
 export const Select: FC<SelectProps<SelectOptionProps>> = ({
   label,
@@ -17,33 +16,43 @@ export const Select: FC<SelectProps<SelectOptionProps>> = ({
   helperText,
   error
 }) => {
+  const [selectedOption, setSelectedOption] = useState({value:value, title:""});
+  const [isOptionListHidden, setIsOptionListHidden] = useState<boolean>(true);
+
+  const labelClasses = [styles.selectLabel, required && styles.required, error && styles.errorText].filter(Boolean).join(" ");
+  const optionsListClasses = [styles.optionListContainer, isOptionListHidden && styles.hidden].filter(Boolean).join(" ");
+  const helperTextClasses = [helperText && styles.helperText, error && styles.hidden].filter(Boolean).join(" ");
+  const errorTextClasses = [styles.helperText, error && styles.errorText].filter(Boolean).join(" ");
+  const selectButtonClasses = [styles.selectComponent, !isOptionListHidden && styles.revealed, error && styles.errorSelectWrapper].filter(Boolean).join(" ");
+  const selectWrapperClasses = [styles.selectWrapper].filter(Boolean).join(" ");
+
+  const onSelectButtonClick = !disabled ? () => setIsOptionListHidden(!isOptionListHidden) : () => {};
+
+  const onSelectOption = (props: OnSelectOptionProps) => {
+    setSelectedOption(props);
+  };
+
   const selectId = testId || "select-component";
-  const [selectedValue, setSelectedValue] = useState(values.find(opt=>opt.selected)?.value || value);
+
+  useEffect(()=>{
+    onSelect(selectedOption.value);
+    EventEmitterClient.emit("onSelectOption", selectedOption.value);
+  }, [selectedOption.value]);
 
   return (
-    <div className={styles.selectContainer}>
-      <label className={`${styles.selectLabel} ${error && styles.errorText}`} htmlFor={selectId} data-testid="select-label">
-        {label + `${required ? " *" : ""}`}
-      </label>
-      <select
-        id={selectId}
-        data-testid={testId}
-        value={selectedValue}
-        onChange={(e) => {
-          setSelectedValue(e.target.value);
-          onSelect(e.target.value);
-        }}
-        required={required}
-        className={`${styles.selectDropdown} ${error ? styles.errorBorder : ""}`}
-        disabled={disabled}
-        aria-invalid={!!error}
-      >
-        <option value="">{placeholder || ""}</option>
-        {values.map((option) => (
-          <SelectOption key={option.value} {...option} />
-        ))}
-      </select>
-      {error || helperText ? <p className={`${styles.helperText} ${error ? styles.errorText : ""}`} data-testid={error ? "error-text" : "helper-text"}>{error || helperText}</p> : ""}
+    <div data-testid={selectId} className={styles.selectContainer}>
+      <p data-testid={"select-label"} className={labelClasses}>{`${label} ${required && "*"}`}</p>
+      <div className={selectWrapperClasses}>
+        <button data-testid={"select-button"} className={selectButtonClasses} onClick={onSelectButtonClick}>
+          <span>{selectedOption.title}</span>
+        </button>
+        <div data-testid={"option-list"} className={optionsListClasses}>
+          <SelectOption value={""} selected={false} title={placeholder || ""} onSelectOption={onSelectOption}/>
+          { values.map(value => <SelectOption key={value.value} onSelectOption={onSelectOption} {...value}/>) }
+        </div>
+      </div>
+      <p className={helperTextClasses}>{helperText}</p>
+      <p className={errorTextClasses}>{error}</p>
     </div>
   );
 };

@@ -1,63 +1,106 @@
 .selectContainer {
     display: flex;
     flex-direction: column;
-    gap: 4px;
     font-family: Arial, sans-serif;
     position: relative;
   }
 
 .selectLabel {
-font-size: 14px;
-font-weight: 500;
-color: black;
-display: flex;
-align-items: center;
-top: -10px;
-
-padding: 0 4px 0 4px;
-margin: 0;
-transform: translateX(7px);
-background-color: #fff;
-font-size: 12px;
-position: absolute;
-z-index: 4;
-}
-
-
-.selectDropdown {
-width: 180px;
-padding: 10px;
-border: 1px solid black;
-border-radius: 6px;
-background: white;
-font-size: 14px;
-color: #ccc;
-cursor: pointer;
-appearance: none;
-
-}
-
-.selectDropdown:focus,
-.selectDropdown:not(:placeholder-shown) {
-color: black;
-}
-
-.selectDropdown option {
-font-size: 14px;
-padding: 10px;
-display: flex;
-align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    display: flex;
+    align-items: center;
+    top: -11px;
+    left: 11px;
+    padding: 0 3px 0 3px;
+    margin: 0;
+    background-color: #fff;
+    font-size: 12px;
+    position: absolute;
+    z-index: 4;
 }
 
 .errorBorder {
-border: 1px solid red;
+    border: 1px solid red;
 }
 
 .errorText {
-color: red;
-
+    color: red;
 }
 .helperText {
     font-size: 12px;
-    padding: 0 0 0 8px;
+    padding: 0 0 0 14px;
+}
+
+.optionListContainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    width: fit-content;
+    border: 1px solid #b7b7b7;
+    border-top: 1px solid #b7b7b7;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height:150px;
+    min-width: 100%;
+    
+}
+
+.hidden{
+    display:none;
+}
+.revealed{
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom: 0px !important;
+}
+.selectComponent{
+    background-color: #fff;
+    width: 350px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    text-align: start;
+    padding-left: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.selectComponent span {
+    padding-left: 5px;
+}
+.errorSelectWrapper {
+    border: 1px solid red;
+    border-radius: 10px;
+}
+.selectOption{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border: none;
+    width: max-content;
+    border-bottom: 1px solid #b7b7b7;
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    text-align: start;
+    justify-content: start;
+    align-items: center;
+    min-width: 100%;
+    min-height: 40px;
+    gap: 15px;
+    padding-left: 9px;
+}
+.selectOption:hover{
+    background-color: #f7f7f7;
+}
+.selected{
+    background-color: #ededed !important;
+    color: #000000;
+}
+.selectWrapper{
+    position: relative;
+    display: flex;
 }

@@ -16,6 +16,6 @@ export interface SelectOptionProps {
   selected: boolean;
   title: string;
   testId?: string;
-  leftIcon?: string,
-  rightIcon?: string
+  LeftIcon?: React.ComponentType,
+  RightIcon?: React.ComponentType
 }

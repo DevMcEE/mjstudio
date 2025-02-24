@@ -91,7 +91,6 @@
 
 }
 
-
 /* form and mockForm are used to simulate forms and should be replaced with actual forms on later stages of implementation
 consider removing all of the code belwo up to return statement after implementing actual forms */
 
@@ -100,11 +99,4 @@ consider removing all of the code belwo up to return statement after implementin
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.mockForm{
-  color: black;
-
-  padding: 10px;
-  border-radius: 20px;
 }

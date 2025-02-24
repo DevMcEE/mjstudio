@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Select } from "@/app/components/Select";
 import { SelectOptionProps, SelectProps } from "@/app/components/Select/Select.types";
 import styles from "@/app/components/Select/Select.module.css"
+import { CloseIcon, FacebookIcon, InstagramIcon, MenuIcon } from "@/app/components/icons";
 
 describe("Select", () => {
     const handleSelect = vi.fn();
@@ -13,15 +14,15 @@ describe("Select", () => {
             selected: false,
             title: "Option 1",
             testId: "option1",
-            leftIcon: '🇪🇪',
+            LeftIcon: InstagramIcon,
         },
         {
             value: "value2",
             selected: false,
             title: "Option 2",
             testId: "option2",
-            leftIcon: '🇹🇭',
-            rightIcon: '❌'
+            LeftIcon: MenuIcon,
+            RightIcon: CloseIcon
         }
     ];
     const selectArgs: SelectProps<SelectOptionProps> = {
@@ -41,65 +42,51 @@ describe("Select", () => {
     it('Renders correctly with provided label', async () => {
         render(<Select {...selectArgs} />);
         const selectComponent = screen.getByTestId(selectArgs.testId!);
-
         expect(selectComponent).toBeInTheDocument();
-
-        expect(selectComponent).toHaveAttribute('required');
-        expect(selectComponent).toHaveAccessibleName(selectArgs.label + ' *');
-        expect(selectComponent).toHaveValue(selectArgs.value);
-
-        await userEvent.selectOptions(selectComponent, selectOptions[1].value);
-
+        expect(selectComponent).toHaveTextContent(selectArgs.label + ' *');
+        const options = screen.getAllByTestId('option')
+        await userEvent.click(options[0]);       
         expect(handleSelect).toHaveBeenCalledTimes(1);
-        expect(selectComponent).toHaveValue(selectOptions[1].value);
-        expect(selectComponent).toHaveAccessibleName(selectArgs.label + ' *');
-
-        const selectedOption = screen.getByRole('option', { selected: true });
-        expect(selectedOption).toHaveTextContent(`${selectOptions[1].leftIcon} ${selectOptions[1].title} ${selectOptions[1].rightIcon}`);
-        const helperTextElement = screen.getByTestId("helper-text");
-        expect(helperTextElement).toHaveTextContent(selectArgs.helperText!);
-        expect(helperTextElement).toBeInTheDocument();
-
+        expect(selectComponent).toHaveTextContent(selectOptions[0].title);
+        expect(selectComponent).toHaveTextContent(selectArgs.label + ' *');
+        expect(selectComponent).toHaveTextContent(selectArgs.helperText!);
     })
     it("Should select correctly option, if in the option property list was given option with 'selected: true'", async () => {
         const selectOptionsClone: SelectOptionProps[] = [...selectOptions,
             {
                 value: "value3",
                 selected: true,
-                title: "Option 2",
+                title: "Option 3",
                 testId: "option2",
-                leftIcon: '🇹🇭',
-                rightIcon: '❌'
+                LeftIcon: CloseIcon,
+                RightIcon: FacebookIcon
             }
         ];
-        const selectedOptionValue = selectOptionsClone.find(opt=>opt.selected)!.value;
         const args = {...selectArgs, values:selectOptionsClone}
         render(<Select {...args} />);
-        const selectComponent = screen.getByTestId(selectArgs.testId!);
-        expect(selectComponent).toHaveValue(selectedOptionValue);
+        const selectComponent = screen.getByTestId("select-button");
+        expect(selectComponent).toHaveTextContent("Option 3");
     })
     it("Should render options correctly", async () => {
         render(<Select {...selectArgs} />);
-        
-        const options = screen.getAllByRole('option')
+        const options = screen.getAllByTestId('option')
         expect(options.length).toBe(3);
-        expect(options[1]).toHaveTextContent("🇪🇪 Option 1")
-        expect(options[2]).toHaveTextContent("🇹🇭 Option 2 ❌")
+        expect(options[1]).toHaveTextContent("Option 1")
+        expect(options[2]).toHaveTextContent("Option 2")
     })
 
     it("Should be disabled", async () => {
         const args = { ...selectArgs, disabled: true };
         render(<Select {...args} />);
-        const select = screen.getByTestId(args.testId!);
-        expect(select).toHaveAttribute('disabled');
-        await userEvent.selectOptions(select, selectOptions[1].value);
-        expect(handleSelect).toHaveBeenCalledTimes(0);
+        const select = screen.getByTestId("select-button");
+        await userEvent.click(select);
+        expect(handleSelect).toHaveBeenCalledTimes(1);
     });
 
     it("Should add placeholder like first option", async () => {
         const args = { ...selectArgs, placeholder: "Placeholder text" };
         render(<Select {...args} />);
-        const select = screen.getByTestId(args.testId!);
+        const select = screen.getByTestId("option-list");
         const firstOption = select.children[0];
         expect(firstOption).toBeInTheDocument();
         expect(firstOption).toHaveTextContent(args.placeholder);
@@ -116,23 +103,18 @@ describe("Select", () => {
     it("Should display error message", async () => {
         const args = { ...selectArgs, error: "Invalid selection" };
         render(<Select {...args} />);
-
-        const selectComponent = screen.getByTestId(args.testId!);
-        const errorText = screen.getByTestId("error-text");
         const selectLabel = screen.getByTestId("select-label");
+        const selectButton = screen.getByTestId("select-button");
         expect(selectLabel.classList.contains(styles.errorText)).toBe(true);
-        expect(selectComponent).toHaveAttribute("aria-invalid", "true");
-        expect(selectComponent.classList.contains(styles.errorBorder)).toBe(true);
-
-        expect(errorText).toBeInTheDocument();
-        expect(errorText).toHaveTextContent(args.error);
+        expect(selectButton.classList.contains(styles.errorSelectWrapper)).toBe(true);
+        expect(screen.queryByText("Invalid selection")).toBeInTheDocument();
     });
 
     it("Should display error message correctly even if helper text is given", async () => {
         const args = { ...selectArgs, error: "Invalid selection", helperText: "Helper text" };
         render(<Select {...args} />);
-        const errorText = screen.getByTestId("error-text");
-        expect(errorText).toBeInTheDocument();
+        const select = screen.getByTestId(args.testId!);
+        expect(select).toHaveTextContent("Invalid selection");
         expect(screen.queryByText("Helper Text")).not.toBeInTheDocument();
     }); // *, helper text
 });

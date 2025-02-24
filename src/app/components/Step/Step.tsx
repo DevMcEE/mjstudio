@@ -8,11 +8,11 @@ interface StepProps {
   stepsTranslationsMap: Record<string, string>;
   isLastStep: boolean;
   form: () => JSX.Element;
-  stepIsCompleted: boolean[];
+  completedSteps: boolean[];
   children?: JSX.Element | null;
 }
 
-export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, isLastStep, stepIsCompleted, children}: StepProps) => {
+export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, isLastStep, completedSteps, children}: StepProps) => {
 
   const step = Object.keys(stepsTranslationsMap)[index];
 
@@ -21,7 +21,7 @@ export const Step = ({ currentStep, steps, stepsTranslationsMap, index, form, is
       <div className={styles.stepItem}>
         <span className={styles.stepItemDetails}>
           <div className={styles.stepIcon}>
-            <StepIcon number={index + 1} isActive={index === currentStep} isCompleted={stepIsCompleted[index]} />
+            <StepIcon number={index + 1} isActive={index === currentStep} isCompleted={completedSteps[index]} />
           </div>
           <div className={styles.stepItemDescription}>
             <span className={styles.stepItemTitle}>{stepsTranslationsMap[step]}</span>

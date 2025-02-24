@@ -1,11 +1,11 @@
-import { SelectedServices } from "../components/Stepper/Stepper.types";
+import { FormStep, SelectedServices } from "../components/Stepper/Stepper.types";
 
 export type Completed = Record<number, boolean>
 
 export interface UseStepper {
     currentStep: number;
-    stepIsCompleted: boolean[];
-    stepIsSubmitted: boolean[];
+    completedSteps: boolean[];
+    submittedSteps: boolean[];
     handleSubmit: () => void;
     handleNext: () => void;
     handleBack: () => void;
@@ -15,3 +15,10 @@ export interface UseStepper {
     stepsNames: string[];
     bookingDetails: Record<number, SelectedServices>;
 }
+
+export interface useStepperProps {
+    steps: FormStep[];
+    selectedService: SelectedServices;
+    setSelectedService: React.Dispatch<React.SetStateAction<SelectedServices>>
+}
+
