@@ -1,4 +1,4 @@
-.emailInput {
+.textInput {
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.emailInputContainer {
+.textInputContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,16 +21,16 @@
     border-radius: 4px;
 }
 
-.emailInputLabel,
-.emailInputHelperText,
-.emailInputErrorText {
+.textInputLabel,
+.textInputHelperText,
+.textInputErrorText {
     font-size: 12px;
     font-weight: 400;
     line-height: 24px;
     padding: 0px 14px;
 }
 
-.emailInputLabel {
+.textInputLabel {
     padding: 0px 4px;
     background-color: white;
     position: absolute;
@@ -39,15 +39,15 @@
     color: black;
 }
 
-.emailInputHelperText {
+.textInputHelperText {
     color: black;
 }
 
-.emailInputErrorText {
+.textInputErrorText {
     color: rgb(255, 0, 0);
 }
 
-.emailInputField {
+.textInputField {
     padding: 16.5px 14px;
     width: 100%;
     border-radius: 6px;
@@ -55,19 +55,19 @@
     font-weight: 400;
     border: 1px solid black;
 }
-.emailInputField:focus {
+.textInputField:focus {
     outline: none;
 }
 
-.emailInputFieldError {
+.textInputFieldError {
     border: 2px solid rgb(255, 0, 0) !important;
 }
 
 .requiredError,
-.emailInputLabelError {
+.textInputLabelError {
     color: rgb(255, 0, 0);
 }
 
-.emailInputMessageContainer {
+.textInputMessageContainer {
     display:flex
 }
