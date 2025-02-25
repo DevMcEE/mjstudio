@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 
-export interface EmailInputProps {
+export interface TextInputProps {
+  type: string;
   id?: string;
   name?: string;
   label: string;
