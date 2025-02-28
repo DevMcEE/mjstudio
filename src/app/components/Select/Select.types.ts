@@ -5,6 +5,7 @@ export interface SelectProps<T extends SelectOptionProps> {
   onSelect: (code: string) => void;
   required: boolean;
   disabled: boolean;
+  placeholder?: string;
   testId?: string;
   helperText?: string;
   error?: string;
@@ -15,6 +16,6 @@ export interface SelectOptionProps {
   selected: boolean;
   title: string;
   testId?: string;
-  leftIcon?: string,
-  rightIcon?: string
+  LeftIcon?: React.ComponentType,
+  RightIcon?: React.ComponentType
 }

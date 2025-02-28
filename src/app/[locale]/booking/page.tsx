@@ -1,3 +1,5 @@
+"use client";
+
 import { Stepper } from "@/app/components/Stepper/Stepper";
 import styles from "./booking.module.css";
 import { useLocale, useTranslations } from "next-intl";
